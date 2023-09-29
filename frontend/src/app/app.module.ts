@@ -15,6 +15,12 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
 import { FormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
+import { UsuarioComponent } from './components/usuario/usuario.component';
+import { NarvarComponent } from './components/narvar/narvar.component';
+
+import { UInfoPerComponent } from './components/u-info-per/u-info-per.component';
+import { UPagoscobrosComponent } from './components/u-pagoscobros/u-pagoscobros.component';
+
 
 @NgModule({
   declarations: [
@@ -23,7 +29,13 @@ import { ToastrModule } from 'ngx-toastr';
     SignInComponent,
     DashboardComponent,
     NavbarComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    UsuarioComponent,
+    NarvarComponent,
+ 
+    UInfoPerComponent,
+       UPagoscobrosComponent,
+   
   ],
   imports: [
     BrowserModule,
