@@ -1,60 +1,98 @@
-<app-navbar></app-navbar>
-<div class="container mt-2 text-center">
-  
-  <html>
-  <head>
-    <title>Airbnb</title>
-  
-  </head>
-  <body>
-    <header>
-      <nav>
-        <ul>
-          <li><a href="#">Inicio</a></li>
-          <li><a href="#">Explorar</a></li>
-          <li><a href="#">Hospedar</a></li>
-          <li><a href="#">Iniciar sesión</a></li>
+
+<html>
+<head>
+  <title>Terreneitor</title>
+ 
+</head>
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Terreneitor</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Usuario</a>
+          </li>
         </ul>
-      </nav>
-    </header>
-    
-    <main>
-      <section>
-        <h1>Descubre lugares increíbles para hospedarte</h1>
-        <form>
-          <input type="text" placeholder="Destino">
-          <input type="date" placeholder="Fecha de entrada">
-          <input type="date" placeholder="Fecha de salida">
-          <button type="submit">Buscar</button>
-        </form>
-      </section>
-      
-      <section>
-        <div>
-          <img src="imagen1.jpg" alt="Imagen 1">
-          <h2>Nombre del alojamiento</h2>
-          <p>Descripción del alojamiento y características.</p>
-        </div>
-        
-        <div>
-          <img src="imagen2.jpg" alt="Imagen 2">
-          <h2>Nombre del alojamiento</h2>
-          <p>Descripción del alojamiento y características.</p>
-        </div>
-        
-        <!-- Repite este bloque de código para mostrar más alojamientos -->
-      </section>
-    </main>
-    
-    <footer>
-      <ul>
-        <li><a href="#">Ayuda</a></li>
-        <li><a href="#">Sobre nosotros</a></li>
-        <li><a href="#">Términos y condiciones</a></li>
-        <li><a href="#">Política de privacidad</a></li>
-      </ul>
-    </footer>
-  </body>
-  </html>
+      </div>
+    </nav>
+  </header>
   
-</div>
+  <main>
+    <section class="jumbotron">
+      <div class="container">
+        <h1 class="display-4">Descubre lugares </h1>
+        <form>
+          <div class="form-row">
+            <div class="col-md-4 mb-3">
+              <input type="text" class="form-control" placeholder="Destino">
+            </div>
+            <div class="col-md-3 mb-3">
+              <input type="date" class="form-control" placeholder="Fecha de entrada">
+            </div>
+            <div class="col-md-3 mb-3">
+              <input type="date" class="form-control" placeholder="Fecha de salida">
+            </div>
+            <div class="col-md-2 mb-3">
+              <button type="submit" class="btn btn-primary">Buscar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+    
+    <section class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card">
+            <img src="imagen1.jpg" class="card-img-top" alt="Imagen 1">
+            <div class="card-body">
+              <h5 class="card-title">Nombre del lugar</h5>
+              <p class="card-text">Descripción del lugar y características.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-4">
+          <div class="card">
+            <img src="imagen2.jpg" class="card-img-top" alt="Imagen 2">
+            <div class="card-body">
+              <h5 class="card-title">Nombre del lugar</h5>
+              <p class="card-text">Descripción del lugar y características.</p>
+            </div>
+          </div>
+        </div>
+        
+       
+        
+      </div>
+    </section>
+  </main>
+  
+  <footer class="bg-light">
+    <div class="container">
+      <ul class="nav justify-content-center">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Ayuda</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Sobre nosotros</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Términos y condiciones</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Política de privacidad</a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+
+</body>
+</html>
