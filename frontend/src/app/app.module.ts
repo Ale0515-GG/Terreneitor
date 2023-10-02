@@ -24,6 +24,10 @@ import { UnidadComponent } from './components/unidad/unidad.component';
 import { AgregarUnidadComponent } from './components/agregar-unidad/agregar-unidad.component';
 import { EditarUnidadComponent } from './components/editar-unidad/editar-unidad.component';
 import { AdministarUnidadComponent } from './components/administar-unidad/administar-unidad.component';
+import { NoficacionesComponent } from './components/noficaciones/noficaciones.component';
+import { UProcesosComponent } from './components/u-procesos/u-procesos.component';
+import { UDocumentosComponent } from './components/u-documentos/u-documentos.component';
+import { MensajesComponent } from './components/mensajes/mensajes.component';
 
 
 @NgModule({
@@ -43,6 +47,10 @@ import { AdministarUnidadComponent } from './components/administar-unidad/admini
        AgregarUnidadComponent,
        EditarUnidadComponent,
        AdministarUnidadComponent,
+       NoficacionesComponent,
+       UProcesosComponent,
+       UDocumentosComponent,
+       MensajesComponent,
    
   ],
   imports: [

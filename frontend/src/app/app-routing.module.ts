@@ -11,6 +11,10 @@ import { UnidadComponent } from './components/unidad/unidad.component';
 import { AgregarUnidadComponent } from './components/agregar-unidad/agregar-unidad.component';
 import { AdministarUnidadComponent } from './components/administar-unidad/administar-unidad.component';
 import { EditarUnidadComponent } from './components/editar-unidad/editar-unidad.component';
+import { NoficacionesComponent } from './components/noficaciones/noficaciones.component';
+import { UProcesosComponent } from './components/u-procesos/u-procesos.component'; 
+import { UDocumentosComponent } from './components/u-documentos/u-documentos.component';
+import { MensajesComponent } from './components/mensajes/mensajes.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'login',pathMatch:'full'},
@@ -25,8 +29,13 @@ const routes: Routes = [
   {path: 'info-unidad',component:UnidadComponent},
   {path: 'agregar-unidad',component:AgregarUnidadComponent},
   {path: 'administar-unidad',component:AdministarUnidadComponent},
+  {path: 'notificaiones',component:NoficacionesComponent},
   {path: 'editar-unidad',component:EditarUnidadComponent},
+  {path: 'procesos',component:UProcesosComponent},
+  {path: 'mensajes',component:MensajesComponent},
+  {path: 'documentos',component:UDocumentosComponent},
   {path: 'usuario_informacionPersonal',component:UInfoPerComponent},
+  
   {path:'**',redirectTo:'login',pathMatch:'full'}
 
 ];
