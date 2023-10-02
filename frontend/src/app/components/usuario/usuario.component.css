@@ -2,7 +2,7 @@ a {
     text-decoration: none;
 }
 
-/* Estilo para mover las tarjetas hacia abajo */
+
 .tarjetas-section {
-    margin-top: 20px; /* Ajusta el valor según lo necesites */
+    margin-top: 20px; 
 }

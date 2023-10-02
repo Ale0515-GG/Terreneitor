@@ -20,6 +20,10 @@ import { NarvarComponent } from './components/narvar/narvar.component';
 
 import { UInfoPerComponent } from './components/u-info-per/u-info-per.component';
 import { UPagoscobrosComponent } from './components/u-pagoscobros/u-pagoscobros.component';
+import { UnidadComponent } from './components/unidad/unidad.component';
+import { AgregarUnidadComponent } from './components/agregar-unidad/agregar-unidad.component';
+import { EditarUnidadComponent } from './components/editar-unidad/editar-unidad.component';
+import { AdministarUnidadComponent } from './components/administar-unidad/administar-unidad.component';
 
 
 @NgModule({
@@ -35,6 +39,10 @@ import { UPagoscobrosComponent } from './components/u-pagoscobros/u-pagoscobros.
  
     UInfoPerComponent,
        UPagoscobrosComponent,
+       UnidadComponent,
+       AgregarUnidadComponent,
+       EditarUnidadComponent,
+       AdministarUnidadComponent,
    
   ],
   imports: [
