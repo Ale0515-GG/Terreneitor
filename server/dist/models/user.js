@@ -17,16 +17,6 @@ exports.User = connection_1.default.define('user', {
         unique: true,
         allowNull: false
     },
-    Nombre: {
-        type: sequelize_1.DataTypes.STRING
-    },
-    Apellido: {
-        type: sequelize_1.DataTypes.STRING
-    },
-    CorreoElectronico: {
-        type: sequelize_1.DataTypes.STRING,
-        unique: true
-    },
     password: {
         type: sequelize_1.DataTypes.STRING,
         allowNull: false
