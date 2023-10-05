@@ -14,6 +14,9 @@ import { UserService } from 'src/app/services/user.service';
 export class SignInComponent implements OnInit {
   username: string = '';
   password: string = '';
+  nombre: string ='';
+  apellido: string ='';
+  email: string ='';
   confirmPassword: string = '';
   loading: boolean = false;
 
@@ -28,11 +31,11 @@ export class SignInComponent implements OnInit {
   addUser() {
 
     // Validamos que el usuario ingrese valores
-    if (this.username == '' || this.password == '' || this.confirmPassword == '') {
+    if (this.username == '' || this.password == '' || this.confirmPassword == ''||this.email == '' ||this.nombre == '' ||this.apellido == '') {
       this.toastr.error('Todos los campos son obligatorios', 'Error');
       return;
     }
-
+    
     // Validamos que las password sean iguales
     if (this.password != this.confirmPassword) {
       this.toastr.error('Las passwords ingresadas son distintas', 'Error');
@@ -42,7 +45,8 @@ export class SignInComponent implements OnInit {
     // Creamos el objeto
     const user: User = {
       username: this.username,
-      password: this.password
+      password: this.password,
+      
     }
 
     this.loading = true;
