@@ -1,9 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
-const user_1 = require("../controllers/user");
+const unidad_1 = require("../controllers/unidad");
 const router = (0, express_1.Router)();
-router.post('/', user_1.newUser);
-router.post('/login', user_1.loginUser);
-router.post('/bucar');
+router.post('/', unidad_1.newUnidad);
 exports.default = router;

@@ -27,7 +27,10 @@ const routes: Routes = [
   {path: 'usuario',component:UsuarioComponent},
   {path: 'pagos',component:UPagoscobrosComponent},
   {path: 'info-unidad',component:UnidadComponent},
+
   {path: 'agregar-unidad',component:AgregarUnidadComponent},
+
+  
   {path: 'administar-unidad',component:AdministarUnidadComponent},
   {path: 'notificaiones',component:NoficacionesComponent},
   {path: 'editar-unidad',component:EditarUnidadComponent},

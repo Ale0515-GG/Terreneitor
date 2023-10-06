@@ -64,3 +64,12 @@ export const loginUser = async (req: Request, res: Response) => {
    
    res.json(token);
 }
+
+
+export const getProductos = async (req: Request, res: Response) => {
+
+    res.json({
+        msg:"Cargando"
+    })
+    
+}
