@@ -15,11 +15,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const user_1 = __importDefault(require("../routes/user"));
+const morgan_1 = __importDefault(require("morgan"));
 const user_2 = require("./user");
+//pagina
+const unidad_1 = __importDefault(require("../routes/unidad"));
 class Server {
     constructor() {
         this.app = (0, express_1.default)();
         this.port = process.env.PORT || '3001';
+        this.app.use((0, morgan_1.default)('dev'));
         this.listen();
         this.midlewares();
         this.routes();
@@ -32,12 +36,14 @@ class Server {
     }
     routes() {
         this.app.use('/api/users', user_1.default);
+        this.app.use('/api/unidad', unidad_1.default);
     }
     midlewares() {
         // Parseo body
         this.app.use(express_1.default.json());
         // Cors
         this.app.use((0, cors_1.default)());
+        this.app.use(express_1.default.urlencoded({ extended: false }));
     }
     dbConnect() {
         return __awaiter(this, void 0, void 0, function* () {

@@ -1,10 +1,20 @@
-import { Router } from 'express';
-import { loginUser, newUser } from '../controllers/user';
-import { newUnidad } from '../controllers/unidad';
+import { Router } from "express"; //objeto
+import { unidadController } from "../controllers/unidad";
 
-const router = Router();
+class UnidadRoutes{
+    public router: Router = Router();
 
-router.post('/', newUnidad);
+    constructor(){
+        this.config();
+    }
 
-
-export default router;
+    config(): void{
+        this.router.get('/',unidadController.list); //ruta inicial
+        this.router.post('/',unidadController.create);
+        this.router.put('/:id',unidadController.update);
+        this.router.delete('/:id',unidadController.delete);
+        this.router.get('/:id',unidadController.select);
+    }
+}
+const  unidadRoutes = new UnidadRoutes();
+export default unidadRoutes.router;

@@ -1,30 +1,65 @@
-import { Request, Response} from 'express';
-import bcrypt from 'bcrypt';
-import { User } from '../models/user';
-import { Unidad } from '../models/unidad';
-import jwt from 'jsonwebtoken';
+import {Request, Response } from 'express';
 
-export const newUnidad = async (req: Request, res: Response) => {
+import pool from '../database';
 
-    const {nombrePropiedad, descripcion, tipoPropiedad, precio, propietarioID,} = req.body;
+class UnidadController {
+    public async list (req: Request, res: Response){
+         const result =  await pool.then(async (connection)=> {
+             return await connection.query(
+                 "SELECT * FROM unidad"
+             );
+        })   
+         res.json(result);
+    }
 
-    try {
-        // Guardarmos usuario en la base de datos
-        await Unidad.create({
-            NombrePropiedad:nombrePropiedad,
-            Descripcion:descripcion,
-            TipoPropiedad:tipoPropiedad,
-            PrecioPorNoche:precio,
-            PropietarioID:propietarioID
+    public async select(req:Request,res:Response):Promise<any>{
+        const {id}=req.params;
+        const result = await pool.then(async (connection) => {
+            return await connection.query(
+                'SELECT * FROM unidad WHERE id=?',[id]
+            );
+        })
+        if (result.length >0){
+            return res.json(result[0]); //revuelve al cliente
+        }
+        console.log(result);
+        res.status(404).json({text:'La unidad no existe'});//codigo de estado
+    }
+
+        public async create (req:Request, res:Response): Promise<void>{
+        //console.log(req.body)
+        const result = await pool.then(async (connection) => {
+            return await connection.query(
+                'INSERT INTO unidad set ?',[req.body]
+            );
         })
     
-        res.json({
-            msg: `Unidad ${nombrePropiedad} creada exitosamente!`
-        })
-    } catch (error) {
-        res.status(400).json({
-            msg: 'Upps ocurrio un error',
-            error
-        })
+        res.json({texto:"unidad Saved"});
+    
     }
+
+    public async delete(req:Request,res:Response):Promise<any>{
+        const {id}=req.params;
+        const result = await pool.then(async (connection) => {
+            return await connection.query(
+                'DELETE FROM unidad WHERE IdCita=?',[id]
+            );
+        })
+        res.json({text:"unidad "+req.params.id+" was deleted"});
+        // res.json({text:"deleting cita"});
+    }
+
+    public async update(req:Request,res:Response):Promise<void>{
+        const { id } = req.params;
+        const result = await pool.then(async (connection) => {
+            return await connection.query(
+                "UPDATE unidad SET ? WHERE Idunidad =?", [req.body, id]
+            );
+        });
+        res.json({ text: "unidad " + req.params.id + " was updated" });
+    }        
+
+ 
 }
+
+export const unidadController = new UnidadController()
