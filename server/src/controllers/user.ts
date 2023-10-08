@@ -5,7 +5,7 @@ import jwt from 'jsonwebtoken';
 
 export const newUser = async (req: Request, res: Response) => {
 
-    const { username, password} = req.body;
+    const { username, password,Nombre,Apellido,CorreoElectronico,NumeroTelefono} = req.body;
 
     // Validamos si el usuario ya existe en la base de datos
     const user = await User.findOne({ where: { username: username } });
@@ -15,6 +15,16 @@ export const newUser = async (req: Request, res: Response) => {
             msg: `Ya existe un usuario con el nombre ${username}`
         })
     } 
+    // Validamos si el usuario ya existe en la base de datos
+    const corre = await User.findOne({ where: { CorreoElectronico: CorreoElectronico } });
+
+    if(corre) {
+         return res.status(400).json({
+             msg: `Ya existe un usuario con el correo ${CorreoElectronico}`
+         })
+    } 
+
+
  
     const hashedPassword = await bcrypt.hash(password, 10);
     
@@ -22,7 +32,12 @@ export const newUser = async (req: Request, res: Response) => {
         // Guardarmos usuario en la base de datos
         await User.create({
             username: username,
-            password: hashedPassword
+            password: hashedPassword,
+            Nombre: Nombre,
+            Apellido:Apellido,
+            CorreoElectronico:CorreoElectronico,
+            NumeroTelefono:NumeroTelefono
+
         })
     
         res.json({

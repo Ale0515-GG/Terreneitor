@@ -1,6 +1,6 @@
 import express, { Application } from 'express';
 import cors from 'cors';
-import routesUser from '../routes/user';
+
 
 import morgan from 'morgan';
 
@@ -9,7 +9,10 @@ import { User } from './user';
 
 
 //pagina
+import routesUser from '../routes/user';
 import unidadRoutes from '../routes/unidad';
+import usuarioRoutes from '../routes/usuario';
+
 
 
 
@@ -39,6 +42,8 @@ class Server {
         
         this.app.use('/api/users', routesUser);
         this.app.use('/api/unidad',unidadRoutes);
+        this.app.use('/api/usuario',usuarioRoutes);
+    
     }
 
     midlewares() {

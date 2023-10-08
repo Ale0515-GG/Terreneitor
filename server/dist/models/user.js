@@ -20,6 +20,19 @@ exports.User = connection_1.default.define('user', {
     password: {
         type: sequelize_1.DataTypes.STRING,
         allowNull: false
+    }, Nombre: {
+        type: sequelize_1.DataTypes.STRING,
+        allowNull: false
+    }, Apellido: {
+        type: sequelize_1.DataTypes.STRING,
+        allowNull: false
+    }, CorreoElectronico: {
+        type: sequelize_1.DataTypes.STRING,
+        unique: true,
+        allowNull: false
+    }, NumeroTelefono: {
+        type: sequelize_1.DataTypes.STRING,
+        allowNull: true
     }
 }, {
     timestamps: false // Esto desactiva las columnas createdAt y updatedAt

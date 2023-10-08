@@ -14,11 +14,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
-const user_1 = __importDefault(require("../routes/user"));
 const morgan_1 = __importDefault(require("morgan"));
-const user_2 = require("./user");
+const user_1 = require("./user");
 //pagina
+const user_2 = __importDefault(require("../routes/user"));
 const unidad_1 = __importDefault(require("../routes/unidad"));
+const usuario_1 = __importDefault(require("../routes/usuario"));
 class Server {
     constructor() {
         this.app = (0, express_1.default)();
@@ -35,8 +36,9 @@ class Server {
         });
     }
     routes() {
-        this.app.use('/api/users', user_1.default);
+        this.app.use('/api/users', user_2.default);
         this.app.use('/api/unidad', unidad_1.default);
+        this.app.use('/api/usuario', usuario_1.default);
     }
     midlewares() {
         // Parseo body
@@ -48,7 +50,7 @@ class Server {
     dbConnect() {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                yield user_2.User.sync();
+                yield user_1.User.sync();
             }
             catch (error) {
                 console.error('Unable to connect to the database:', error);

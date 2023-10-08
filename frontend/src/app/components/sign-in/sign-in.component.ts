@@ -2,20 +2,30 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { User } from 'src/app/interfaces/user';
+
 import { ErrorService } from 'src/app/services/error.service';
 import { UserService } from 'src/app/services/user.service';
 
+import { Usuario } from 'src/app/interfaces/usuario';
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.css']
 })
 export class SignInComponent implements OnInit {
+
+
   username: string = '';
   password: string = '';
   confirmPassword: string = '';
+  nombre: string = '';
+  apellido: string = '';
+  correoElectronico: string = '';
+  NumeroTelefono:string='';
   loading: boolean = false;
+
+ 
+
 
   constructor(private toastr: ToastrService,
     private _userService: UserService,
@@ -28,7 +38,7 @@ export class SignInComponent implements OnInit {
   addUser() {
 
     // Validamos que el usuario ingrese valores
-    if (this.username == '' || this.password == '' || this.confirmPassword == '') {
+    if (this.username == '' || this.password == '' || this.confirmPassword == '' ||this.nombre == '' || this.apellido== '' ||  this.correoElectronico == '' || this.NumeroTelefono=='') {
       this.toastr.error('Todos los campos son obligatorios', 'Error');
       return;
     }
@@ -40,9 +50,14 @@ export class SignInComponent implements OnInit {
     }
 
     // Creamos el objeto
-    const user: User = {
+    const user: Usuario = {
       username: this.username,
       password: this.password,
+      Nombre: this.nombre ,
+      Apellido: this.apellido ,
+      CorreoElectronico: this.correoElectronico ,
+      NumeroTelefono:this.NumeroTelefono
+
       
     }
 

@@ -1,3 +1,4 @@
+
 CREATE DATABASE terreneitor_db;
 
 USE terreneitor_db;
@@ -10,7 +11,6 @@ CREATE TABLE Usuarios (
     Contraseña VARCHAR(255),
     FechaRegistro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-
 select * from Usuarios;
 
 CREATE TABLE Direcciones (
@@ -23,15 +23,14 @@ CREATE TABLE Direcciones (
 );
 
 
+
 CREATE TABLE unidad (
     ID INT AUTO_INCREMENT PRIMARY KEY,
     NombrePropiedad VARCHAR(255),
     Descripcion TEXT,
     TipoPropiedad VARCHAR(100),
     PrecioPorNoche DECIMAL(10, 2),
-    DireccionID VARCHAR(255),
-  
-    FOREIGN KEY (PropietarioID) REFERENCES Usuarios(ID)
+    DireccionID VARCHAR(255)
 );
 
 CREATE TABLE Reservas (
@@ -106,10 +105,9 @@ CREATE TABLE terreneitor_db.users (
     ID INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(255) NOT NULL,
     password VARCHAR(255) NOT NULL,
-    Nombre VARCHAR(255),
+	Nombre VARCHAR(255),
     Apellido VARCHAR(255),
-    CorreoElectronico VARCHAR(255) UNIQUE
-    FechaRegistro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    CorreoElectronico VARCHAR(255) UNIQUE,
+     NumeroTelefono VARCHAR(255),
+     FechaRegistro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-
-DESCRIBE unidad;
