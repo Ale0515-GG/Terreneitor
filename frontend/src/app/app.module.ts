@@ -28,6 +28,9 @@ import { NoficacionesComponent } from './components/noficaciones/noficaciones.co
 import { UProcesosComponent } from './components/u-procesos/u-procesos.component';
 import { UDocumentosComponent } from './components/u-documentos/u-documentos.component';
 import { MensajesComponent } from './components/mensajes/mensajes.component';
+import { CargandoMapaComponent } from './components/cargando-mapa/cargando-mapa.component';
+import { MapaVistaComponent } from './components/mapa-vista/mapa-vista.component';
+import { BtnLocalizacionComponent } from './components/btn-localizacion/btn-localizacion.component';
 
 
 @NgModule({
@@ -51,6 +54,9 @@ import { MensajesComponent } from './components/mensajes/mensajes.component';
        UProcesosComponent,
        UDocumentosComponent,
        MensajesComponent,
+       CargandoMapaComponent,
+       MapaVistaComponent,
+       BtnLocalizacionComponent,
    
   ],
   imports: [
