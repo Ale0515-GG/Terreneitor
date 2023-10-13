@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'; //permite hacer peticiones http
-import { Usuario } from 'src/app/interfaces/usuario'; 
+import { HttpClient } from '@angular/common/http';
+import { Usuario } from 'src/app/interfaces/usuario';
 import { Observable } from 'rxjs';
-
-
 
 @Injectable({
   providedIn: 'root'
@@ -14,26 +12,35 @@ export class UsuarioService {
 
   constructor(private http: HttpClient) { }
 
-  //Devuelve todos los pacientes
-  getUsuarios() {
-    return this.http.get(`${this.API_URI}/usuario`); //o direccion donde estan los pacientes o /Paciente
+  getUsuarios(): Observable<Usuario[]> {
+    return this.http.get<Usuario[]>(`${this.API_URI}/usuario`);
   }
 
-
-  getUsuario(id: String){
-    return this.http.get(`${this.API_URI}/usuario/${id}`); //peticio al id que proporcione
+  getUsuario(id: string): Observable<Usuario> {
+    return this.http.get<Usuario>(`${this.API_URI}/usuario/${id}`);
   }
 
-  deleteUsuario(id: String){
+  deleteUsuario(id: string): Observable<any> {
     return this.http.delete(`${this.API_URI}/usuario/${id}`);
   }
 
-  saveUsuario(ID: Usuario){
-    return this.http.post(`${this.API_URI}/usuario`, ID);
+  saveUsuario(usuario: Usuario): Observable<Usuario> {
+    return this.http.post<Usuario>(`${this.API_URI}/usuario`, usuario);
   }
 
-  updateUsuario(id:string|any, updateUsario:Usuario){
-    return this.http.put(`${this.API_URI}/usuario/${id}`,updateUsario);
+  updateNombre(id: string, nombre: string): Observable<Usuario> {
+    return this.http.put<Usuario>(`${this.API_URI}/usuario/${id}/nombre`, { Nombre: nombre });
+  }
 
+  updateApellido(id: string, apellido: string): Observable<Usuario> {
+    return this.http.put<Usuario>(`${this.API_URI}/usuario/${id}/apellido`, { Apellido: apellido });
+  }
+
+  updateCorreoElectronico(id: string, correo: string): Observable<Usuario> {
+    return this.http.put<Usuario>(`${this.API_URI}/usuario/${id}/correo`, { CorreoElectronico: correo });
+  }
+
+  updateNumeroTelefono(id: string, telefono: string): Observable<Usuario> {
+    return this.http.put<Usuario>(`${this.API_URI}/usuario/${id}/telefono`, { NumeroTelefono: telefono });
   }
 }

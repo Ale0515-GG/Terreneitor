@@ -59,7 +59,80 @@ class UsuarioController {
         res.json({ text: "unidad " + req.params.id + " was updated" });
     }        
 
- 
+
+    public async updateNombre(req: Request, res: Response): Promise<void> {
+        const { id } = req.params;
+        const { Nombre } = req.body;
+
+        try {
+            const result = await pool.then(async (connection) => {
+                return await connection.query(
+                    "UPDATE terreneitor_db.users SET Nombre = ? WHERE ID = ?",
+                    [Nombre, id]
+                );
+            });
+
+            res.json({ text: "El Nombre del usuario con ID " + id + " ha sido actualizado" });
+        } catch (error) {
+            res.status(500).json({ error: "Ocurrió un error al actualizar el Nombre del usuario" });
+        }
+    }
+
+    public async updateApellido(req: Request, res: Response): Promise<void> {
+        const { id } = req.params;
+        const { Apellido } = req.body;
+
+        try {
+            const result = await pool.then(async (connection) => {
+                return await connection.query(
+                    "UPDATE terreneitor_db.users SET Apellido = ? WHERE ID = ?",
+                    [Apellido, id]
+                );
+            });
+
+            res.json({ text: "El Apellido del usuario con ID " + id + " ha sido actualizado" });
+        } catch (error) {
+            res.status(500).json({ error: "Ocurrió un error al actualizar el Apellido del usuario" });
+        }
+    }
+
+    public async updateCorreoElectronico(req: Request, res: Response): Promise<void> {
+        const { id } = req.params;
+        const { CorreoElectronico } = req.body;
+
+        try {
+            const result = await pool.then(async (connection) => {
+                return await connection.query(
+                    "UPDATE terreneitor_db.users SET CorreoElectronico = ? WHERE ID = ?",
+                    [CorreoElectronico, id]
+                );
+            });
+
+            res.json({ text: "El Correo Electrónico del usuario con ID " + id + " ha sido actualizado" });
+        } catch (error) {
+            res.status(500).json({ error: "Ocurrió un error al actualizar el Correo Electrónico del usuario" });
+        }
+    }
+
+    public async updateNumeroTelefono(req: Request, res: Response): Promise<void> {
+        const { id } = req.params;
+        const { NumeroTelefono } = req.body;
+
+        try {
+            const result = await pool.then(async (connection) => {
+                return await connection.query(
+                    "UPDATE terreneitor_db.users SET NumeroTelefono = ? WHERE ID = ?",
+                    [NumeroTelefono, id]
+                );
+            });
+
+            res.json({ text: "El Número de Teléfono del usuario con ID " + id + " ha sido actualizado" });
+        } catch (error) {
+            res.status(500).json({ error: "Ocurrió un error al actualizar el Número de Teléfono del usuario" });
+        }
+    }
 }
+ 
+
 
 export const usuarioController = new UsuarioController()

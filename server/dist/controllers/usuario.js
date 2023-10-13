@@ -64,5 +64,65 @@ class UsuarioController {
             res.json({ text: "unidad " + req.params.id + " was updated" });
         });
     }
+    updateNombre(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { id } = req.params;
+            const { Nombre } = req.body;
+            try {
+                const result = yield database_1.default.then((connection) => __awaiter(this, void 0, void 0, function* () {
+                    return yield connection.query("UPDATE terreneitor_db.users SET Nombre = ? WHERE ID = ?", [Nombre, id]);
+                }));
+                res.json({ text: "El Nombre del usuario con ID " + id + " ha sido actualizado" });
+            }
+            catch (error) {
+                res.status(500).json({ error: "Ocurrió un error al actualizar el Nombre del usuario" });
+            }
+        });
+    }
+    updateApellido(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { id } = req.params;
+            const { Apellido } = req.body;
+            try {
+                const result = yield database_1.default.then((connection) => __awaiter(this, void 0, void 0, function* () {
+                    return yield connection.query("UPDATE terreneitor_db.users SET Apellido = ? WHERE ID = ?", [Apellido, id]);
+                }));
+                res.json({ text: "El Apellido del usuario con ID " + id + " ha sido actualizado" });
+            }
+            catch (error) {
+                res.status(500).json({ error: "Ocurrió un error al actualizar el Apellido del usuario" });
+            }
+        });
+    }
+    updateCorreoElectronico(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { id } = req.params;
+            const { CorreoElectronico } = req.body;
+            try {
+                const result = yield database_1.default.then((connection) => __awaiter(this, void 0, void 0, function* () {
+                    return yield connection.query("UPDATE terreneitor_db.users SET CorreoElectronico = ? WHERE ID = ?", [CorreoElectronico, id]);
+                }));
+                res.json({ text: "El Correo Electrónico del usuario con ID " + id + " ha sido actualizado" });
+            }
+            catch (error) {
+                res.status(500).json({ error: "Ocurrió un error al actualizar el Correo Electrónico del usuario" });
+            }
+        });
+    }
+    updateNumeroTelefono(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { id } = req.params;
+            const { NumeroTelefono } = req.body;
+            try {
+                const result = yield database_1.default.then((connection) => __awaiter(this, void 0, void 0, function* () {
+                    return yield connection.query("UPDATE terreneitor_db.users SET NumeroTelefono = ? WHERE ID = ?", [NumeroTelefono, id]);
+                }));
+                res.json({ text: "El Número de Teléfono del usuario con ID " + id + " ha sido actualizado" });
+            }
+            catch (error) {
+                res.status(500).json({ error: "Ocurrió un error al actualizar el Número de Teléfono del usuario" });
+            }
+        });
+    }
 }
 exports.usuarioController = new UsuarioController();
