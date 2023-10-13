@@ -12,11 +12,14 @@
                         <div class="row">
                           <div class="col-lg-16">
                             <div class="card mb-4">
-                              <div class="card-body text-center">
-                                <img src="path_to_user_avatar.jpg" alt="Usuario" class="rounded-circle mb-3" style="width: 150px; height: 150px;">
-                                <h5 class="card-title">{{ usuario.Nombre }}</h5> <!-- Muestra el nombre del usuario -->
-                                <p class="card-text">// Ubicación //</p>
-                              </div>
+                                <div class="card-body text-center">
+                                    <img src="path_to_user_avatar.jpg" alt="Usuario" class="rounded-circle mb-3" style="width: 150px; height: 150px;">
+                                    <h5 class="card-title">{{ usuario.Nombre }}</h5>
+                                    <p class="card-text">{{ usuario.Apellido }}</p>
+                                    <p class="card-text">{{ usuario.CorreoElectronico }}</p>
+                                    <p class="card-text">{{ usuario.NumeroTelefono }}</p>
+                                  </div>
+                                  
                             </div>
                           </div>
                         </div>
@@ -74,10 +77,10 @@
         </div>
     </div>
 
-    <!-- Las primeras tres tarjetas -->
+    <!-- Las primeras tres tarjetas 
     <div class="row">
         <div class="col-md-4">
-            <a routerLink="/documentos"> <!-- Cambia "/1" según la ID del lugar -->
+            <a routerLink="/documentos"> 
                 <div class="card">
                     <img src="imagen1.jpg" class="card-img-top" alt="Imagen 1">
                     <div class="card-body">
@@ -89,7 +92,7 @@
         </div>
 
         <div class="col-md-4">
-            <a routerLink="/notificaiones"> <!-- Cambia "/2" según la ID del lugar -->
+            <a routerLink="/notificaiones"> 
                 <div class="card">
                     <img src="imagen1.jpg" class="card-img-top" alt="Imagen 1">
                     <div class="card-body">
@@ -101,7 +104,7 @@
         </div>
 
         <div class="col-md-4">
-            <a routerLink="/procesos"> <!-- Cambia "/3" según la ID del lugar -->
+            <a routerLink="/procesos"> 
                 <div class="card">
                     <img src="imagen1.jpg" class="card-img-top" alt="Imagen 1">
                     <div class="card-body">
@@ -112,4 +115,5 @@
             </a>
         </div>
     </div>
+        -->
 

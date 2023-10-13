@@ -27,7 +27,7 @@ class UsuarioController {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
             const result = yield database_1.default.then((connection) => __awaiter(this, void 0, void 0, function* () {
-                return yield connection.query('SELECT * FROM terreneitor_db.users WHERE id=?', [id]);
+                return yield connection.query('SELECT * FROM terreneitor_db.users WHERE username=?', [id]);
             }));
             if (result.length > 0) {
                 return res.json(result[0]); //revuelve al cliente
@@ -59,7 +59,7 @@ class UsuarioController {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
             const result = yield database_1.default.then((connection) => __awaiter(this, void 0, void 0, function* () {
-                return yield connection.query("UPDATE terreneitor_db.users SET ? WHERE Idunidad =?", [req.body, id]);
+                return yield connection.query("UPDATE terreneitor_db.users SET Nombre,Apellido,CorreoElectronico,NumeroTelefono, WHERE ID =?", [req.body, id]);
             }));
             res.json({ text: "unidad " + req.params.id + " was updated" });
         });

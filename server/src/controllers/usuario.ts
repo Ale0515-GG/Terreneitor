@@ -16,7 +16,7 @@ class UsuarioController {
         const {id}=req.params;
         const result = await pool.then(async (connection) => {
             return await connection.query(
-                'SELECT * FROM terreneitor_db.users WHERE id=?',[id]
+                'SELECT * FROM terreneitor_db.users WHERE username=?',[id]
             );
         })
         if (result.length >0){
@@ -53,7 +53,7 @@ class UsuarioController {
         const { id } = req.params;
         const result = await pool.then(async (connection) => {
             return await connection.query(
-                "UPDATE terreneitor_db.users SET ? WHERE Idunidad =?", [req.body, id]
+                "UPDATE terreneitor_db.users SET Nombre,Apellido,CorreoElectronico,NumeroTelefono, WHERE ID =?", [req.body, id]
             );
         });
         res.json({ text: "unidad " + req.params.id + " was updated" });
