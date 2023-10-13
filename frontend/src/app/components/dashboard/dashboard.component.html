@@ -5,30 +5,38 @@
  
 </head>
 <body>
-
-  
   <main>
     <section class="jumbotron">
+      
       <div class="container">
-        <h1 class="display-4">Descubre lugares </h1>
-        <form>
-          <div class="form-row">
-            <div class="col-md-4 mb-3">
-              <input type="text" class="form-control" placeholder="Destino">
-            </div>
-            
-            <div class="col-md-2 mb-3">
-              <button type="submit" class="btn btn-primary">Buscar</button>
-            </div>
+        <div class="row">
+          <div class="col-md-6">
+            <h1 class="display-4">Descubre lugares</h1>
+            <form>
+              <div class="form-row">
+                <div class="col-md-3 mb-3">
+                  <input type="text" class="form-control" placeholder="Destino">
+                </div>
+                <div class="col-md-2 mb-2">
+                  <button type="submit" class="btn btn-primary">Buscar</button>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="col-md-6">
 
-            <div class="col-md-2 mb-3">
-              <app-cargando-mapa></app-cargando-mapa>
-              
-            </div>
+            <app-cargando-mapa *ngIf="!localizacionListo; else mapaListo"></app-cargando-mapa>
+    
+
+            <ng-template #mapaListo>
+              <app-mapa-vista></app-mapa-vista>
+            </ng-template>
 
           </div>
-        </form>
+        </div>
       </div>
+      
+
     </section>
     
         <section class="container">

@@ -1,0 +1,8 @@
+.mapa-container{
+    position:fixed;
+    top: 0px;
+    right: 0px;
+    width: 100vm;
+    height: 100vh;
+    background-color: red;
+}

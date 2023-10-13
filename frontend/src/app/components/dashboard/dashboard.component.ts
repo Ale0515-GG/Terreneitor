@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
   unidades: any=[] ;
-
+  localizacionListo: boolean = false; 
   constructor(private unidadservice: UnidadService, private router: Router) {}
 
   ngOnInit(): void {
