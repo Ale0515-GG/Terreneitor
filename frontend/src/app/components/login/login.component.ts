@@ -6,6 +6,7 @@ import { User } from 'src/app/interfaces/user';
 import { ErrorService } from 'src/app/services/error.service';
 import { UserService } from 'src/app/services/user.service';
 
+import { UserglobalService } from 'src/app/services/userglobal.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -16,20 +17,23 @@ export class LoginComponent implements OnInit {
   password: string = '';
   loading: boolean = false;
 
-  constructor(private toastr: ToastrService,
+  constructor(
+    private toastr: ToastrService,
     private _userService: UserService,
     private router: Router,
-    private _errorService: ErrorService) { }
+    private _errorService: ErrorService,
+    private usergo: UserglobalService,
+    private userService: UserService // Inyecta el servicio UserService
+  ) { }
 
   ngOnInit(): void {
   }
 
   login() {
-
     // Validamos que el usuario ingrese datos
     if (this.username == '' || this.password == '') {
       this.toastr.error('Todos los campos son obligatorios', 'Error');
-      return
+      return;
     }
 
     // Creamos el body
@@ -39,18 +43,17 @@ export class LoginComponent implements OnInit {
     }
 
     this.loading = true;
+    
     this._userService.login(user).subscribe({
       next: (token) => {
         localStorage.setItem('token', token);
-        this.router.navigate(['/dashboard'])
+        
+        // Establece el nombre de usuario en el servicio
+        this.usergo.setUserName(this.username);
+        console.log('Nombre de usuario:', this.username);
+        this.router.navigate(['/dashboard']);
       },
-      error: (e: HttpErrorResponse) => {
-        this._errorService.msjError(e);
-        this.loading = false
-      }
-    })
-  }
-
-  
-
-}
+      // ...
+    });
+    
+  }}

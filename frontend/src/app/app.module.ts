@@ -32,6 +32,7 @@ import { CargandoMapaComponent } from './components/cargando-mapa/cargando-mapa.
 import { MapaVistaComponent } from './components/mapa-vista/mapa-vista.component';
 import { BtnLocalizacionComponent } from './components/btn-localizacion/btn-localizacion.component';
 
+import { UserglobalService } from './services/userglobal.service';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,7 @@ import { BtnLocalizacionComponent } from './components/btn-localizacion/btn-loca
       preventDuplicates:true,
     }),
   ],
-  providers: [],
+  providers: [UserglobalService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
