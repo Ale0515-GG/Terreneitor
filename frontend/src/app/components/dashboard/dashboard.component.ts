@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Unidad } from 'src/app/interfaces/unidad';
 import { UnidadService } from 'src/app/services/unidad/unidad.service';
-import { Router } from '@angular/router';
+import { Router,ActivatedRoute } from '@angular/router';
+import { UserglobalService } from 'src/app/services/userglobal.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,7 +12,14 @@ import { Router } from '@angular/router';
 export class DashboardComponent implements OnInit {
   unidades: any=[] ;
   localizacionListo: boolean = false; 
-  constructor(private unidadservice: UnidadService, private router: Router) {}
+  selectedUnidad: Unidad | null = null;
+  username: string = '';
+  password: string = '';
+  loading: boolean = false;
+
+ ID: number = 0;
+
+  constructor(private unidadservice: UnidadService, private router: Router,  private route: ActivatedRoute,private usergo: UserglobalService) {}
 
   ngOnInit(): void {
     this.getUnidades();
@@ -24,5 +32,11 @@ export class DashboardComponent implements OnInit {
       },
       err => console.log(err)
     );
+  }
+
+  
+  setUnidad(){
+    this.usergo.setUnidad(this.ID);
+    console.log('Id Unidad:', this.ID);
   }
 }

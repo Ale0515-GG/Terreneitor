@@ -25,26 +25,31 @@
           </div>
           <div class="col-md-6">
 
-            
+            <app-cargando-mapa *ngIf="!localizacionListo; else mapaListo"></app-cargando-mapa>
+    
+
+            <ng-template #mapaListo>
+              <app-mapa-vista></app-mapa-vista>
+            </ng-template>
           </div>
         </div>
       </div>
       
 
     </section>
-    
-        <section class="container">
-          <div class="row">
-            <div class="col-md-4" *ngFor="let unidad of unidades">
-              <a [routerLink]="'/info-unidad/' + unidad.id">
-                <div class="card">
-                  <img [src]="unidad.imagenUrl" class="card-img-top" [alt]="unidad.nombre">
-                  <div class="card-body">
-                    <h5 class="card-title">{{ unidad.NombrePropiedad }}</h5>
-                    <p class="card-text">{{ unidad.Descripcion }}</p>
-                  </div>
-                </div>
-              </a>
+
+    <section class="container">
+      <div class="row">
+        <div class="col-md-4" *ngFor="let unidad of unidades">
+          <a (click)="setUnidad()" [routerLink]="'/info-unidad/'">
+            <div class="card">
+              <img [src]="unidad.imagenUrl" class="card-img-top" [alt]="unidad.nombre">
+              <div class="card-body">
+                <h5 class="card-title">{{ unidad.NombrePropiedad }}</h5>
+                <p class="card-text">{{ unidad.Descripcion }}</p>
+              </div>
             </div>
-          </div>
-        </section>
+          </a>
+        </div>
+      </div>
+    </section>
