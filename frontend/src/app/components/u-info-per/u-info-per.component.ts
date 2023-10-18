@@ -4,6 +4,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import { UserglobalService } from 'src/app/services/userglobal.service';
 
+
+import { Storage,ref, uploadBytes, listAll,getDownloadURL } from '@angular/fire/storage';
+
 @Component({
   selector: 'app-u-info-per',
   templateUrl: './u-info-per.component.html',
@@ -20,12 +23,18 @@ export class UInfoPerComponent implements OnInit {
   nuevoCorreo: string = '';
   nuevoTelefono: string = '';
 
+
+  ///arreglo para las imagenes 
+  images:string[];
+
   constructor(
     private usuarioService: UsuarioService,
     private router: Router,
     private userService: UserService,
-    private ugloService: UserglobalService
-  ) {}
+    private ugloService: UserglobalService,
+    private storage:Storage
+
+  ) {this.images=[]}
 
   ngOnInit() {
     // Obtiene el nombre de usuario desde la variable global y asigna el valor a this.username
@@ -34,6 +43,7 @@ export class UInfoPerComponent implements OnInit {
 
     // Llama a la función para obtener la información del usuario
     this.getUsuarioByUsername(this.username);
+    this.getImages();
   }
 
   getUsuarioByUsername(id: string) {
@@ -80,5 +90,32 @@ export class UInfoPerComponent implements OnInit {
       },
       (err) => console.log(err)
     );
+  }
+
+  uploadImage($event:any){
+    const file=$event.target.files[0];
+    console.log(file);
+
+    const imgRef= ref(this.storage,`imagenes/${file.name}`);
+
+    uploadBytes(imgRef,file)
+    .then(response =>console.log(response))
+    .catch(error=>console.log(error))
+    
+  }
+
+  getImages(){
+    const imagesRef= ref(this.storage,`imagenes`);
+
+    listAll(imagesRef)
+    .then( async response=>{
+      console.log(response);
+      this.images=[];
+      for(let item of response.items){
+        const url= await getDownloadURL(item);
+        this.images.push(url);
+      }
+    })
+    .catch(error=> console.log(error))
   }
 }

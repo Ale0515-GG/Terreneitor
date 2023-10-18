@@ -30,7 +30,8 @@ CREATE TABLE unidad (
     Descripcion TEXT,
     TipoPropiedad VARCHAR(100),
     PrecioPorNoche DECIMAL(10, 2),
-    DireccionID VARCHAR(255)
+    DireccionID VARCHAR(255),
+    imagen VARCHAR(100)
 );
 
 CREATE TABLE Reservas (

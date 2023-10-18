@@ -5,6 +5,13 @@
             <div class="col-md-6">
                 <form>
                     <div class="form-group">
+                        <label for="nombreLegal">Imagen de usuario </label>
+                        <div class="input-group">
+                            <input type="file" (change)="uploadImage($event)" >
+                        </div>
+                    </div>
+
+                    <div class="form-group">
                         <label for="nombreLegal">Nombre legal (Nombres)</label>
                         <div class="input-group">
                             <input type="text" class="form-control" id="nombreLegal" [(ngModel)]="usuario.Nombre" name="Nombre">
@@ -38,7 +45,7 @@
                 <div class="user-info">
                     <div class="card mb-4">
                         <div class="card-body text-center">
-                            <img src="path_to_user_avatar.jpg" alt="Usuario" class="rounded-circle mb-3" style="width: 150px; height: 150px;">
+                            <img [src]="image" *ngFor="let image of images" style="width: 150px; height: 150px;">
                             <h5 class="card-title">Nombre de usuario</h5>
                             <p class="card-title">{{ usuario.username }}</p>
                             <h5 class="card-title">Numero de identificacion</h5>

@@ -33,6 +33,9 @@ import { MapaVistaComponent } from './components/mapa-vista/mapa-vista.component
 import { BtnLocalizacionComponent } from './components/btn-localizacion/btn-localizacion.component';
 
 import { UserglobalService } from './services/userglobal.service';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideStorage,getStorage } from '@angular/fire/storage';
 
 //import angular fire 
 
@@ -74,6 +77,8 @@ import { UserglobalService } from './services/userglobal.service';
       positionClass:'toast-bottom-right',
       preventDuplicates:true,
     }),
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideStorage(() => getStorage()),
   ],
   providers: [UserglobalService],
   bootstrap: [AppComponent]
