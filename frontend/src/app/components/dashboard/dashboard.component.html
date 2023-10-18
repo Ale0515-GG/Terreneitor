@@ -38,18 +38,20 @@
 
     </section>
 
-    <section class="container">
-      <div class="row">
-        <div class="col-md-4" *ngFor="let unidad of unidades">
-          <a (click)="setUnidad()" [routerLink]="'/info-unidad/'">
-            <div class="card">
-              <img [src]="unidad.imagenUrl" class="card-img-top" [alt]="unidad.nombre">
-              <div class="card-body">
-                <h5 class="card-title">{{ unidad.NombrePropiedad }}</h5>
-                <p class="card-text">{{ unidad.Descripcion }}</p>
-              </div>
-            </div>
-          </a>
+    <div class="col-md-4" *ngFor="let unidad of unidades">
+      <a  (click)="guardarIDEnVariableGlobal(unidad.ID)">
+      
+      
+        <div class="card">
+          <img [src]="unidad.imagenUrl" class="card-img-top" [alt]="unidad.nombre">
+          <div class="card-body">
+            <h5 class="card-title">{{ unidad.ID }}</h5>
+            <h5 class="card-title">{{ unidad.NombrePropiedad }}</h5>
+            <p class="card-text">{{ unidad.Descripcion }}</p>
+            <button (click)="guardarIDEnVariableGlobal(unidad.ID)"> Explorar </button>
+          </div>
         </div>
-      </div>
-    </section>
+      </a>
+    </div>
+    
+   

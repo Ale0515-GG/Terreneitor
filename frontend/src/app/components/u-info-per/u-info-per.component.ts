@@ -1,9 +1,8 @@
-import { Component,HostBinding, OnInit } from '@angular/core';
+import { Component, HostBinding, OnInit } from '@angular/core';
 import { UsuarioService } from 'src/app/services/usuario/usuario.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import { UserglobalService } from 'src/app/services/userglobal.service';
-
 
 @Component({
   selector: 'app-u-info-per',
@@ -15,6 +14,11 @@ export class UInfoPerComponent implements OnInit {
   usuario: any;
   username: string = '';
 
+  // Variables para las actualizaciones
+  nuevoNombre: string = '';
+  nuevoApellido: string = '';
+  nuevoCorreo: string = '';
+  nuevoTelefono: string = '';
 
   constructor(
     private usuarioService: UsuarioService,
@@ -30,7 +34,6 @@ export class UInfoPerComponent implements OnInit {
 
     // Llama a la función para obtener la información del usuario
     this.getUsuarioByUsername(this.username);
- 
   }
 
   getUsuarioByUsername(id: string) {
@@ -42,7 +45,40 @@ export class UInfoPerComponent implements OnInit {
       (err) => console.log(err)
     );
   }
-  
 
+  actualizarNombre() {
+    this.usuarioService.updateNombre(this.username, this.nuevoNombre).subscribe(
+      (res) => {
+        // Manejar la respuesta exitosa si es necesario
+      },
+      (err) => console.log(err)
+    );
+  }
+
+  actualizarApellido() {
+    this.usuarioService.updateApellido(this.username, this.nuevoApellido).subscribe(
+      (res) => {
+        // Manejar la respuesta exitosa si es necesario
+      },
+      (err) => console.log(err)
+    );
+  }
+
+  actualizarCorreo() {
+    this.usuarioService.updateCorreoElectronico(this.username, this.nuevoCorreo).subscribe(
+      (res) => {
+        // Manejar la respuesta exitosa si es necesario
+      },
+      (err) => console.log(err)
+    );
+  }
+
+  actualizarTelefono() {
+    this.usuarioService.updateNumeroTelefono(this.username, this.nuevoTelefono).subscribe(
+      (res) => {
+        // Manejar la respuesta exitosa si es necesario
+      },
+      (err) => console.log(err)
+    );
+  }
 }
-

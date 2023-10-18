@@ -4,6 +4,7 @@ import { UnidadService } from 'src/app/services/unidad/unidad.service';
 import { Router,ActivatedRoute } from '@angular/router';
 import { UserglobalService } from 'src/app/services/userglobal.service';
 
+import { IdStorageService } from 'src/app/services/id-storage.service';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -17,9 +18,9 @@ export class DashboardComponent implements OnInit {
   password: string = '';
   loading: boolean = false;
 
- ID: number = 0;
+ value: string = '';
 
-  constructor(private unidadservice: UnidadService, private router: Router,  private route: ActivatedRoute,private usergo: UserglobalService) {}
+ constructor(private unidadservice: UnidadService, private router: Router, private route: ActivatedRoute, private usergo: UserglobalService, private idStorageService: IdStorageService) {}
 
   ngOnInit(): void {
     this.getUnidades();
@@ -33,10 +34,12 @@ export class DashboardComponent implements OnInit {
       err => console.log(err)
     );
   }
+  guardarIDEnVariableGlobal(id: string) {
+    this.idStorageService.setID(id);
+    console.log('Nombre de usuario:', id);
+        this.router.navigate(['/info-unidad']);
+  }
 
   
-  setUnidad(){
-    this.usergo.setUnidad(this.ID);
-    console.log('Id Unidad:', this.ID);
-  }
+  
 }

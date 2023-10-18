@@ -1,5 +1,5 @@
 <app-narvar></app-narvar>
-<h2 class="mt-4">Unidad</h2>
+<h2 class="mt-4">{{ unidad.NombrePropiedad }}</h2>
 
 
 
@@ -13,16 +13,7 @@
         </div>
     </div>
     
-    <div class="row mt-4">
-    <div class="col-md-6">
-        <div class="card">
-            <div class="card-body">
-                <h3>Servicios</h3>
-                
-            </div>
-        </div>
-    </div>
-</div>
+    
 </div>
 
 
@@ -30,10 +21,11 @@
     <div class="col-md-6">
         <div class="card">
             <div class="card-body">
-                <h3>Precio por noche</h3>
-                <p>
-                    <input type="text" id="precio" class="form-control" placeholder="$495 MXN">
-                </p>
+                
+                <h3>Tipo de Unidad </h3>
+                   
+                    <p>{{ unidad.TipoPropiedad }}</p>
+                
               
             </div>
         </div>
@@ -41,8 +33,11 @@
     <div class="col-md-6">
         <div class="card">
             <div class="card-body">
-                <h3>Disponibilidad</h3>
-               
+                <h3>Precio </h3>
+                <p>El precio de la unidad es en Pesos Mexicanos</p>
+                <p>$ {{ unidad.PrecioPorNoche }} Mx</p>
+                <button>Comprar</button>
+                <div #paypal></div>
             </div>
         </div>
     </div>
@@ -67,7 +62,7 @@
         <div class="card">
             <div class="card-body">
                 <h3>Descripción</h3>
-                <textarea id="descripcion" class="form-control" rows="4" cols="50">Hermosa casa estilo mexicano </textarea>
+                <p>{{ unidad.Descripcion }}</p>
             </div>
         </div>
     </div>
