@@ -40,12 +40,11 @@
                         </div>
                     </div>
                 </form>
-            </div>
-            <div class="col-md-6">
+            </div><div class="col-md-6">
                 <div class="user-info">
                     <div class="card mb-4">
                         <div class="card-body text-center">
-                            <img [src]="image" *ngFor="let image of images" style="width: 150px; height: 150px;">
+                            <img [src]="images" style="width: 150px; height: 150px;"> <!-- Muestra la primera imagen -->
                             <h5 class="card-title">Nombre de usuario</h5>
                             <p class="card-title">{{ usuario.username }}</p>
                             <h5 class="card-title">Numero de identificacion</h5>

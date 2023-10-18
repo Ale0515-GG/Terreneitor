@@ -90,32 +90,32 @@ export class UInfoPerComponent implements OnInit {
       },
       (err) => console.log(err)
     );
-  }
+  }uploadImage($event: any) {
+    const file = $event.target.files[0];
+    const usuarioID = this.usuario.ID; // Asumiendo que el ID del usuario está en this.usuario
 
-  uploadImage($event:any){
-    const file=$event.target.files[0];
     console.log(file);
 
-    const imgRef= ref(this.storage,`imagenes/${file.name}`);
+    const imgRef = ref(this.storage, `imagenes/${usuarioID}/${file.name}`);
 
-    uploadBytes(imgRef,file)
-    .then(response =>console.log(response))
-    .catch(error=>console.log(error))
-    
-  }
+    uploadBytes(imgRef, file)
+      .then(response => console.log(response))
+      .catch(error => console.log(error));
+}
 
-  getImages(){
-    const imagesRef= ref(this.storage,`imagenes`);
+getImages() {
+    const usuarioID = this.usuario.ID; // Asegúrate de que el ID del usuario esté disponible
+    const imagesRef = ref(this.storage, `imagenes/${usuarioID}/`);
 
     listAll(imagesRef)
-    .then( async response=>{
-      console.log(response);
-      this.images=[];
-      for(let item of response.items){
-        const url= await getDownloadURL(item);
-        this.images.push(url);
-      }
-    })
-    .catch(error=> console.log(error))
-  }
+      .then(async response => {
+        console.log(response);
+        this.images = [];
+        for (let item of response.items) {
+          const url = await getDownloadURL(item);
+          this.images.push(url);
+        }
+      })
+      .catch(error => console.log(error));
+}
 }
