@@ -70,7 +70,7 @@ class UsuarioController {
             const { Nombre } = req.body;
             try {
                 const result = yield database_1.default.then((connection) => __awaiter(this, void 0, void 0, function* () {
-                    return yield connection.query("UPDATE terreneitor_db.users SET Nombre = ? WHERE ID = ?", [Nombre, id]);
+                    return yield connection.query("UPDATE terreneitor_db.users SET Nombre = ? WHERE username = ?", [Nombre, id]);
                 }));
                 res.json({ text: "El Nombre del usuario con ID " + id + " ha sido actualizado" });
             }
@@ -85,7 +85,7 @@ class UsuarioController {
             const { Apellido } = req.body;
             try {
                 const result = yield database_1.default.then((connection) => __awaiter(this, void 0, void 0, function* () {
-                    return yield connection.query("UPDATE terreneitor_db.users SET Apellido = ? WHERE ID = ?", [Apellido, id]);
+                    return yield connection.query("UPDATE terreneitor_db.users SET Apellido = ? WHERE username = ?", [Apellido, id]);
                 }));
                 res.json({ text: "El Apellido del usuario con ID " + id + " ha sido actualizado" });
             }
@@ -100,7 +100,7 @@ class UsuarioController {
             const { CorreoElectronico } = req.body;
             try {
                 const result = yield database_1.default.then((connection) => __awaiter(this, void 0, void 0, function* () {
-                    return yield connection.query("UPDATE terreneitor_db.users SET CorreoElectronico = ? WHERE ID = ?", [CorreoElectronico, id]);
+                    return yield connection.query("UPDATE terreneitor_db.users SET CorreoElectronico = ? WHERE username = ?", [CorreoElectronico, id]);
                 }));
                 res.json({ text: "El Correo Electrónico del usuario con ID " + id + " ha sido actualizado" });
             }
@@ -115,7 +115,7 @@ class UsuarioController {
             const { NumeroTelefono } = req.body;
             try {
                 const result = yield database_1.default.then((connection) => __awaiter(this, void 0, void 0, function* () {
-                    return yield connection.query("UPDATE terreneitor_db.users SET NumeroTelefono = ? WHERE ID = ?", [NumeroTelefono, id]);
+                    return yield connection.query("UPDATE terreneitor_db.users SET NumeroTelefono = ? WHERE username = ?", [NumeroTelefono, id]);
                 }));
                 res.json({ text: "El Número de Teléfono del usuario con ID " + id + " ha sido actualizado" });
             }

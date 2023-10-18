@@ -67,7 +67,7 @@ class UsuarioController {
         try {
             const result = await pool.then(async (connection) => {
                 return await connection.query(
-                    "UPDATE terreneitor_db.users SET Nombre = ? WHERE ID = ?",
+                    "UPDATE terreneitor_db.users SET Nombre = ? WHERE username = ?",
                     [Nombre, id]
                 );
             });
@@ -85,7 +85,7 @@ class UsuarioController {
         try {
             const result = await pool.then(async (connection) => {
                 return await connection.query(
-                    "UPDATE terreneitor_db.users SET Apellido = ? WHERE ID = ?",
+                    "UPDATE terreneitor_db.users SET Apellido = ? WHERE username = ?",
                     [Apellido, id]
                 );
             });
@@ -103,7 +103,7 @@ class UsuarioController {
         try {
             const result = await pool.then(async (connection) => {
                 return await connection.query(
-                    "UPDATE terreneitor_db.users SET CorreoElectronico = ? WHERE ID = ?",
+                    "UPDATE terreneitor_db.users SET CorreoElectronico = ? WHERE username = ?",
                     [CorreoElectronico, id]
                 );
             });
@@ -121,7 +121,7 @@ class UsuarioController {
         try {
             const result = await pool.then(async (connection) => {
                 return await connection.query(
-                    "UPDATE terreneitor_db.users SET NumeroTelefono = ? WHERE ID = ?",
+                    "UPDATE terreneitor_db.users SET NumeroTelefono = ? WHERE username = ?",
                     [NumeroTelefono, id]
                 );
             });

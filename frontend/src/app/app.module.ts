@@ -34,6 +34,9 @@ import { BtnLocalizacionComponent } from './components/btn-localizacion/btn-loca
 
 import { UserglobalService } from './services/userglobal.service';
 
+//import angular fire 
+
+
 @NgModule({
   declarations: [
     AppComponent,
