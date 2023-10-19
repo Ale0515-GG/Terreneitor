@@ -3,48 +3,34 @@ import { UsuarioService } from 'src/app/services/usuario/usuario.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import { UserglobalService } from 'src/app/services/userglobal.service';
-import 'firebase/storage';
-
-import { Storage,ref, uploadBytes, listAll,getDownloadURL } from '@angular/fire/storage';
+import { Storage, ref, uploadBytes, listAll, getDownloadURL, deleteObject } from '@angular/fire/storage';
 
 @Component({
   selector: 'app-u-info-per',
   templateUrl: './u-info-per.component.html',
   styleUrls: ['./u-info-per.component.css']
 })
-
 export class UInfoPerComponent implements OnInit {
   @HostBinding('class') classes = 'row';
   usuario: any;
   username: string = '';
-
-  // Variables para las actualizaciones
-  nuevoNombre: string = '';
-  nuevoApellido: string = '';
-  nuevoCorreo: string = '';
-  nuevoTelefono: string = '';
-
-
-  ///arreglo para las imagenes 
-  images:string[];
+  id: number = 0;
+  images: string[] = [];
 
   constructor(
     private usuarioService: UsuarioService,
     private router: Router,
     private userService: UserService,
     private ugloService: UserglobalService,
-    private storage:Storage
-
-  ) {this.images=[]}
+    private storage: Storage
+  ) { this.images = []; }
 
   ngOnInit() {
     // Obtiene el nombre de usuario desde la variable global y asigna el valor a this.username
     this.username = this.ugloService.getUserName();
-    console.log('Nombre de usuario:', this.username);
 
     // Llama a la función para obtener la información del usuario
     this.getUsuarioByUsername(this.username);
-    this.getImages();
   }
 
   getUsuarioByUsername(id: string) {
@@ -52,71 +38,70 @@ export class UInfoPerComponent implements OnInit {
     this.usuarioService.getUsuario(id).subscribe(
       (res) => {
         this.usuario = res;
+        // Una vez que se ha cargado la información del usuario, puedes llamar a getImages
+        this.getImages();
       },
       (err) => console.log(err)
     );
   }
 
-  actualizarNombre() {
-    this.usuarioService.updateNombre(this.username, this.nuevoNombre).subscribe(
-      (res) => {
-        // Manejar la respuesta exitosa si es necesario
-      },
-      (err) => console.log(err)
-    );
-  }
+  uploadImage($event: any) {
+    // Verifica si se ha seleccionado un archivo
+    if ($event.target.files.length === 0) {
+      console.error('No se ha seleccionado ningún archivo.');
+      return;
+    }
 
-  actualizarApellido() {
-    this.usuarioService.updateApellido(this.username, this.nuevoApellido).subscribe(
-      (res) => {
-        // Manejar la respuesta exitosa si es necesario
-      },
-      (err) => console.log(err)
-    );
-  }
-
-  actualizarCorreo() {
-    this.usuarioService.updateCorreoElectronico(this.username, this.nuevoCorreo).subscribe(
-      (res) => {
-        // Manejar la respuesta exitosa si es necesario
-      },
-      (err) => console.log(err)
-    );
-  }
-
-  actualizarTelefono() {
-    this.usuarioService.updateNumeroTelefono(this.username, this.nuevoTelefono).subscribe(
-      (res) => {
-        // Manejar la respuesta exitosa si es necesario
-      },
-      (err) => console.log(err)
-    );
-  }uploadImage($event: any) {
     const file = $event.target.files[0];
-    const usuarioID = this.usuario.ID; // Asumiendo que el ID del usuario está en this.usuario
-
     console.log(file);
 
-    const imgRef = ref(this.storage, `imagenes/${usuarioID}/${file.name}`);
+    // Verifica si this.usuario tiene un valor antes de acceder a this.usuario.ID
+    if (this.usuario && this.usuario.ID) {
+      const usuarioID = this.usuario.ID;
+      const storage = this.storage; // Almacena una referencia al servicio de almacenamiento
 
-    uploadBytes(imgRef, file)
-      .then((response: any) => console.log(response))
-      .catch((error: any) => console.log(error));
-}
+      // Elimina la imagen anterior
+      listAll(ref(storage, `imagenes/${usuarioID}`))
+        .then(async response => {
+          for (let item of response.items) {
+            await deleteObject(item);
+          }
 
-getImages() {
-    const usuarioID = this.usuario.ID; // Asegúrate de que el ID del usuario esté disponible
-    const imagesRef = ref(this.storage, `imagenes/${usuarioID}/`);
+          // Sube la nueva imagen después de eliminar la anterior
+          const imgRef = ref(storage, `imagenes/${usuarioID}/${file.name}`);
+          uploadBytes(imgRef, file)
+            .then(response => {
+              console.log('Nueva imagen subida:', response);
+              // Llama a getImages para actualizar la lista de imágenes
+              this.getImages();
+            })
+            .catch(error => console.log(error));
+        })
+        .catch(error => console.log(error));
+    } else {
+      console.error('El objeto de usuario o su ID son undefined.');
+    }
+  }
 
-    listAll(imagesRef)
-      .then(async (response: { items: any; }) => {
-        console.log(response);
-        this.images = [];
-        for (let item of response.items) {
-          const url = await getDownloadURL(item);
-          this.images.push(url);
-        }
-      })
-      .catch((error: any) => console.log(error));
-}
+  getImages() {
+    if (this.usuario && this.usuario.ID) {
+      const usuarioID = this.usuario.ID;
+      const imagesRef = ref(this.storage, `imagenes/${usuarioID}`);
+
+      listAll(imagesRef)
+        .then(async response => {
+          console.log(response);
+          this.images = [];
+
+          for (let item of response.items) {
+            const url = await getDownloadURL(item);
+            this.images.push(url);
+            console.log(url);
+          }
+        })
+        .catch((error: any) => console.log(error));
+    } else {
+      console.error('El objeto de usuario o su ID son undefined.');
+    }
+  }
 }

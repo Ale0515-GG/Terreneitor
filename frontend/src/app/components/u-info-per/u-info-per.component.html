@@ -1,67 +1,62 @@
 <app-narvar></app-narvar>
-<body>
-    <div class="container mt-4">
-        <div class="row">
-            <div class="col-md-6">
-                <form>
-                    <div class="form-group">
-                        <label for="nombreLegal">Imagen de usuario </label>
-                        <div class="input-group">
-                            <input type="file" (change)="uploadImage($event)" >
-                        </div>
-                    </div>
 
-                    <div class="form-group">
-                        <label for="nombreLegal">Nombre legal (Nombres)</label>
-                        <div class="input-group">
-                            <input type="text" class="form-control" id="nombreLegal" [(ngModel)]="usuario.Nombre" name="Nombre">
-                            <button type="button" class="btn btn-primary" (click)="actualizarNombre()">Actualizar</button>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                       
-                        <div class="input-group">
-                            <input type="text" class="form-control" id="apellido" [(ngModel)]="usuario.Apellido" name="Apellido">
-                            <button type="button" class="btn btn-primary" (click)="actualizarApellido()">Actualizar</button>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="correoElectronico">Correo electrónico</label>
-                        <div class="input-group">
-                            <input type="email" class="form-control" id="correoElectronico" [(ngModel)]="usuario.CorreoElectronico" name="CorreoElectronico">
-                            <button type="button" class="btn btn-primary" (click)="actualizarCorreo()">Actualizar</button>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="numeroTelefono">Número de teléfono</label>
-                        <div class="input-group">
-                            <input type="tel" class="form-control" id="numeroTelefono" [(ngModel)]="usuario.NumeroTelefono" name="NumeroTelefono">
-                            <button type="button" class="btn btn-primary" (click)="actualizarTelefono()">Actualizar</button>
-                        </div>
-                    </div>
-                </form>
-            </div><div class="col-md-6">
-                <div class="user-info">
-                    <div class="card mb-4">
-                        <div class="card-body text-center">
-                            <img [src]="images" style="width: 150px; height: 150px;"> <!-- Muestra la primera imagen -->
-                            <h5 class="card-title">Nombre de usuario</h5>
-                            <p class="card-title">{{ usuario.username }}</p>
-                            <h5 class="card-title">Numero de identificacion</h5>
-                            <p class="card-title">{{ usuario.ID }}</p>
-                        </div>
-                    </div>
-                    <div class="card mb-4">
-                        <div class="card-body text-center">
-                            <h5 class="card-text">==Datos==</h5>
-                            <p class="card-text">{{ usuario.Nombre }}</p>
-                            <p class="card-text">{{ usuario.Apellido }}</p>
-                            <p class="card-text">{{ usuario.CorreoElectronico }}</p>
-                            <p class="card-text">{{ usuario.NumeroTelefono }}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-6">
+      <form>
+        <div class="form-group">
+          <label for="nombreLegal">Imagen de usuario</label>
+          <div class="input-group">
+            <input type="file" #fileInput (change)="uploadImage(fileInput)">
+
+          </div>
         </div>
+        <div class="form-group">
+          <label for="nombreLegal">Nombre legal (Nombres)</label>
+          <div class="input-group">
+            <input type="text" class="form-control" id="nombreLegal" [(ngModel)]="usuario.Nombre" name="Nombre">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="input-group">
+            <input type="text" class="form-control" id="apellido" [(ngModel)]="usuario.Apellido" name="Apellido">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="correoElectronico">Correo electrónico</label>
+          <div class="input-group">
+            <input type="email" class="form-control" id="correoElectronico" [(ngModel)]="usuario.CorreoElectronico" name="CorreoElectronico">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="numeroTelefono">Número de teléfono</label>
+          <div class="input-group">
+            <input type="tel" class="form-control" id="numeroTelefono" [(ngModel)]="usuario.NumeroTelefono" name="NumeroTelefono">
+          </div>
+        </div>
+      </form>
     </div>
-</body>
+    <div class="col-md-6">
+      <div class="user-info">
+        <div class="card mb-4">
+          <div class="card-body text-center">
+            <img [src]="images[0]" style="width: 150px; height: 150px;"> <!-- Muestra la primera imagen -->
+            <h5 class="card-title">Nombre de usuario</h5>
+            <p class="card-title">{{ usuario.username }}</p>
+            <h5 class="card-title">Numero de identificacion</h5>
+            <p class="card-title">{{ usuario.ID }}</p>
+          </div>
+        </div>
+        <div class="card mb-4">
+          <div class="card-body text-center">
+            <h5 class="card-text">==Datos==</h5>
+            <p class="card-text">{{ usuario.Nombre }}</p>
+            <p class="card-text">{{ usuario.Apellido }}</p>
+            <p class="card-text">{{ usuario.CorreoElectronico }}</p>
+            <p class="card-text">{{ usuario.NumeroTelefono }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
