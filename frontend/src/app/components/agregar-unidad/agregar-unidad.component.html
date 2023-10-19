@@ -4,6 +4,11 @@
 
 <div class="container">
   <!-- Nombre de la unidad -->
+
+  <input type="file" (change)="uploadImages($event)">
+  <div class="image">
+    <img [src]="" *ngFor="let image of images">
+  </div>
   <h2 class="mt-4">Nombre de la unidad</h2>
   <input type="text" class="form-control" placeholder="Nombre de la Unidad" [(ngModel)]="unida.NombrePropiedad">
   
