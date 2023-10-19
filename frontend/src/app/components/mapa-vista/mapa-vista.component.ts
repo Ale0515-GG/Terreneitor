@@ -1,5 +1,5 @@
 import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
-import {Map} from 'mapbox-gl';
+import {Map, Popup} from 'mapbox-gl';
 import { LugaresService } from 'src/app/services/lugares.service';
 
 @Component({
@@ -8,13 +8,13 @@ import { LugaresService } from 'src/app/services/lugares.service';
   styleUrls: ['./mapa-vista.component.css']
 })
 export class MapaVistaComponent implements AfterViewInit{
-  constructor(private lugarSvc:LugaresService){}
 
-@ViewChild('mapaListo')
-mapDivElement!:ElementRef
+@ViewChild('mapDiv') mapDivElement!:ElementRef
+
+constructor(private lugarSvc:LugaresService){}
 
   ngAfterViewInit(): void {
-    if(!this.lugarSvc.localizacion)throw Error('No hay lugarSvc.localizacion')
+    if(!this.lugarSvc.localizacion)throw Error('No hay Localizacion')
     
     const map = new Map({
       container: this.mapDivElement.nativeElement,
@@ -22,6 +22,12 @@ mapDivElement!:ElementRef
       center: this.lugarSvc.localizacion,
       zoom: 14, // starting zoom
       });
+
+
+      const popup = new Popup().setHTML(`
+      <h6></h6>
+      
+      `);
 
   }
 

@@ -8,7 +8,7 @@ import { LugaresService } from 'src/app/services/lugares.service';
 })
 
 export class CargandoMapaComponent implements OnInit{
-  constructor(private lugarSvc:LugaresService){}
+  constructor(){}
 
   ngOnInit(): void {
     

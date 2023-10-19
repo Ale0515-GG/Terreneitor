@@ -18,7 +18,7 @@ localizacion?:[number,number];
     return new Promise((resolve,reject)=>{
         navigator.geolocation.getCurrentPosition(
           ({coords})=>{
-            this.localizacion= [coords.longitude,coords.longitude];
+            this.localizacion= [coords.longitude,coords.latitude];
             resolve(this.localizacion)
           },(err)=>{
             alert('No se pudo obtener la geolocalizacion');

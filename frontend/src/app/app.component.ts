@@ -12,7 +12,7 @@ export class AppComponent {
   constructor(private lugarSvc:LugaresService){}
 
   get localizacionListo(){
-    console.log(this.lugarSvc.localizacion);
+   
     return this.lugarSvc.localizacionListo;
   }
 }
