@@ -12,6 +12,7 @@ import { Storage,ref, uploadBytes, listAll,getDownloadURL } from '@angular/fire/
   templateUrl: './u-info-per.component.html',
   styleUrls: ['./u-info-per.component.css']
 })
+
 export class UInfoPerComponent implements OnInit {
   @HostBinding('class') classes = 'row';
   usuario: any;
