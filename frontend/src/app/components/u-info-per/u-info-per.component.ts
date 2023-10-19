@@ -3,7 +3,7 @@ import { UsuarioService } from 'src/app/services/usuario/usuario.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import { UserglobalService } from 'src/app/services/userglobal.service';
-
+import 'firebase/storage';
 
 import { Storage,ref, uploadBytes, listAll,getDownloadURL } from '@angular/fire/storage';
 
@@ -99,8 +99,8 @@ export class UInfoPerComponent implements OnInit {
     const imgRef = ref(this.storage, `imagenes/${usuarioID}/${file.name}`);
 
     uploadBytes(imgRef, file)
-      .then(response => console.log(response))
-      .catch(error => console.log(error));
+      .then((response: any) => console.log(response))
+      .catch((error: any) => console.log(error));
 }
 
 getImages() {
@@ -108,7 +108,7 @@ getImages() {
     const imagesRef = ref(this.storage, `imagenes/${usuarioID}/`);
 
     listAll(imagesRef)
-      .then(async response => {
+      .then(async (response: { items: any; }) => {
         console.log(response);
         this.images = [];
         for (let item of response.items) {
@@ -116,6 +116,6 @@ getImages() {
           this.images.push(url);
         }
       })
-      .catch(error => console.log(error));
+      .catch((error: any) => console.log(error));
 }
 }
