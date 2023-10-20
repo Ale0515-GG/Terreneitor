@@ -18,9 +18,9 @@ export class AgregarUnidadComponent implements OnInit {
     DireccionID: '',
    
   };
-images:string[];
+
   
-  constructor(private unidadService: UnidadService, private router: Router, private storage:Storage) {this.images=[];}
+  constructor(private unidadService: UnidadService, private router: Router, private storage:Storage) {}
 
   ngOnInit(){
     this.getImages
@@ -30,6 +30,7 @@ images:string[];
     this.unidadService.saveUnidad(this.unida).subscribe(
       (res) => {
         console.log(res);
+        this.uploadImages(event);
         this.router.navigate(['/administar-unidad']);
       },
       (err) => console.error(err)
@@ -51,10 +52,9 @@ images:string[];
     listAll(imagesRef)
     .then(async response=>{
       console.log(response)
-      this.images=[];
       for(let item of response.items){
-       const url= await getDownloadURL(item);
-       this.images.push(url)
+       const url= await getDownloadURL(item)
+       console.log()
       }
     })
     .catch(err=>{

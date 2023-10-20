@@ -28,8 +28,8 @@ export class UnidadService {
     return this.http.delete(`${this.API_URI}/unidad/${id}`);
   }
 
-  saveUnidad(ID: Unidad){
-    return this.http.post(`${this.API_URI}/unidad`, ID);
+  saveUnidad(unidad: Unidad): Observable<Unidad> {
+    return this.http.post<Unidad>(`${this.API_URI}/unidad`, unidad);
   }
   updateUnidad(id:string|any, updateUnidad:Unidad):Observable<Unidad>{
     return this.http.put(`${this.API_URI}/unidad/${id}`,updateUnidad);

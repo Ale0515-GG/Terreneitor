@@ -4,16 +4,28 @@
 
 <div class="container">
   <!-- Nombre de la unidad -->
-
-  <input type="file" (change)="uploadImages($event)">
-  <div class="image">
-    <img [src]="" *ngFor="let image of images">
+  <div class="row mt-4">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h3>Nombre de la Unidad</h3>
+          <input type="text" class="form-control" placeholder="Nombre de la Unidad" [(ngModel)]="unida.NombrePropiedad">
+        </div>
+      </div>
+    </div>
   </div>
-  <h2 class="mt-4">Nombre de la unidad</h2>
-  <input type="text" class="form-control" placeholder="Nombre de la Unidad" [(ngModel)]="unida.NombrePropiedad">
-  
-  <!-- Información de alojamiento    <p>{{ unidad.NombrePropiedad }}</p> -->
-  
+
+  <!-- Agrega un elemento de entrada de archivos en tu formulario HTML -->
+  <div class="row mt-4">
+    <div class="col-md-6">
+      <div class= "card">
+        <div class="card-body">
+          <h3>Imágenes</h3>
+          <input type="file" (change)=" uploadImages($event)">
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Precios y disponibilidad -->
   <div class="row mt-4">
@@ -21,7 +33,7 @@
       <div class="card">
         <div class="card-body">
           <h3>Precio</h3>
-          <input type="text" class="form-control" placeholder="$495 MXN" [(ngModel)]="unida.PrecioPorNoche">
+          <input type="number" class="form-control" placeholder="$495 MXN" [(ngModel)]="unida.PrecioPorNoche">
         </div>
       </div>
     </div>
@@ -39,31 +51,31 @@
     </div>
   </div>
 
+  <!-- Tipo de propiedad -->
   <div class="row mt-4">
     <div class="col-md-6">
       <div class="card">
         <div class="card-body">
-          <h3>Dueño</h3>
-          <p>Información del usuario precargada</p>
-          <!-- Agrega más detalles sobre el anfitrión aquí si es necesario -->
+          <h3>Tipo de Propiedad</h3>
+          <input type="text" class="form-control" placeholder="Tipo de Propiedad" [(ngModel)]="unida.TipoPropiedad">
         </div>
       </div>
     </div>
   </div>
 
+  <!-- Dirección -->
   <div class="row mt-4">
     <div class="col-md-12">
       <div class="card">
         <div class="card-body">
           <h3>Dirección</h3>
           <input type="text" class="form-control" placeholder="Dirección" [(ngModel)]="unida.DireccionID">
-          <p>Mapa implementado con API</p>
         </div>
       </div>
     </div>
   </div>
-  
+
   <br>
-  
+
   <button class="btn btn-primary" (click)="saveNewUnidad()">Guardar</button>
 </div>
