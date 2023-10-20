@@ -26,7 +26,7 @@ export class AgregarUnidadComponent implements OnInit {
     this.unidadService.saveUnidad(this.unida).subscribe(
       (res) => {
         console.log(res);
-        this.router.navigate(['/administar-unidad']);
+        this.router.navigate(['/dashboard']);
       },
       (err) => console.error(err)
     );

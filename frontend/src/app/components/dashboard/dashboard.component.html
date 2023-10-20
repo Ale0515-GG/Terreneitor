@@ -6,41 +6,17 @@
 </head>
 <body>
 
-    <div id="carouselExample" class="carousel slide">
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img src="../../../assets/img/1.jpeg" class="d-block w-100" alt="..." height="400">
-        </div>
-        <div class="carousel-item">
-          <img src="../../../assets/img/2.jpeg" class="d-block w-100" alt="..." height="400">
-        </div>
-        <div class="carousel-item">
-          <img src="../../../assets/img/3.jpeg" class="d-block w-100" alt="..." height="400">
-        </div>
-        <div class="carousel-item">
-          <img src="../../../assets/img/4.jpeg" class="d-block w-100" alt="..." height="400">
-        </div>
-      </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-    </div>
-
-    <br>
-    <br>
-
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h1 class="display-4">Descubre lugares</h1>
 
     <div class="container">
       <div class="row">
         <div class="col-md-4" *ngFor="let unidad of unidades">
           <a (click)="guardarIDEnVariableGlobal(unidad.ID)">
             <div class="card">
-              <img [src]="unidad.imagenUrl" class="card-img-top" [alt]="unidad.nombre">
+              <img src="../../../assets/img/cargando.jpg" class="card-img-top" [alt]="unidad.nombre">
               <div class="card-body">
                 <h5 class="card-title">{{ unidad.ID }}</h5>
                 <h5 class="card-title">{{ unidad.NombrePropiedad }}</h5>
