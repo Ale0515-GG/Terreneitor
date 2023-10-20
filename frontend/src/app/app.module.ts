@@ -36,6 +36,12 @@ import { UserglobalService } from './services/userglobal.service';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideStorage,getStorage } from '@angular/fire/storage';
+import { MapaComponent } from './components/mapa/mapa.component';
+import { ResultsComponent } from './components/results/results.component';
+import { BuscarComponent } from './components/buscar/buscar.component';
+import { VerUnidadesComponent } from './components/ver-unidades/ver-unidades.component';
+import { VerUbiComponent } from './components/ver-ubi/ver-ubi.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 //import angular fire 
 
@@ -64,6 +70,12 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
        CargandoMapaComponent,
        MapaVistaComponent,
        BtnLocalizacionComponent,
+       MapaComponent,
+       ResultsComponent,
+       BuscarComponent,
+       VerUnidadesComponent,
+       VerUbiComponent,
+       FooterComponent,
    
   ],
   imports: [

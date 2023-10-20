@@ -12,10 +12,13 @@ import { AgregarUnidadComponent } from './components/agregar-unidad/agregar-unid
 import { AdministarUnidadComponent } from './components/administar-unidad/administar-unidad.component';
 import { EditarUnidadComponent } from './components/editar-unidad/editar-unidad.component';
 import { NoficacionesComponent } from './components/noficaciones/noficaciones.component';
-import { UProcesosComponent } from './components/u-procesos/u-procesos.component'; 
+import { UProcesosComponent } from './components/u-procesos/u-procesos.component';
 import { UDocumentosComponent } from './components/u-documentos/u-documentos.component';
 import { MensajesComponent } from './components/mensajes/mensajes.component';
+import { MapaComponent } from './components/mapa/mapa.component';
 
+import { VerUbiComponent } from './components/ver-ubi/ver-ubi.component';
+import { FooterComponent } from './components/footer/footer.component';
 const routes: Routes = [
   {path:'',redirectTo:'login',pathMatch:'full'},
 
@@ -27,10 +30,10 @@ const routes: Routes = [
   {path: 'usuario',component:UsuarioComponent},
   {path: 'pagos',component:UPagoscobrosComponent},
   {path: 'info-unidad',component:UnidadComponent},
-
+  {path: 'ubicacion',component:VerUbiComponent},
   {path: 'agregar-unidad',component:AgregarUnidadComponent},
 
-  
+
   {path: 'administar-unidad',component:AdministarUnidadComponent},
   {path: 'notificaiones',component:NoficacionesComponent},
   {path: 'editar-unidad',component:EditarUnidadComponent},
@@ -38,7 +41,8 @@ const routes: Routes = [
   {path: 'mensajes',component:MensajesComponent},
   {path: 'documentos',component:UDocumentosComponent},
   {path: 'usuario_informacionPersonal',component:UInfoPerComponent},
-  
+  {path: 'mapa',component:MapaComponent},
+
   {path:'**',redirectTo:'login',pathMatch:'full'}
 
 ];

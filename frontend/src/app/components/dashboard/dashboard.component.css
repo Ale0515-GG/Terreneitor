@@ -1,3 +1,16 @@
-a {
-    text-decoration: none;
+
+
+.mapa {
+  position: absolute;
+  top: auto;
+  right: 0;
+  width: auto;
+  height: 100vh;
 }
+
+
+
+  #img1 {
+    max-height: 40px; /* Ajusta este valor según tus preferencias */
+  }
+

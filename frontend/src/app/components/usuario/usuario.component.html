@@ -1,119 +1,83 @@
 <app-narvar></app-narvar>
 
+<img src="../../../assets/img/1.jpeg" class="img-fluid" style="position: absolute; right: 0; top: 0; z-index: -100; opacity: 0.75;">
 
-<section class="container tarjetas-section">
+<div class="background-container">
+   
+    <section class="container tarjetas-section">
+
+  <section class="container tarjetas-section">
     <div class="mt-4">
-
-        <div class="row">
-          <div class="col-lg-16">
-            <div class="card mb-4">
-                <section class="container tarjetas-section">
-                    <div class="mt-4">
-                        <div class="row">
-                          <div class="col-lg-16">
-                            <div class="card mb-4">
-                                <div class="card-body text-center">
-                                    <img [src]="images[0]" style="width: 150px; height: 150px;">
-                                     <h5 class="card-title">{{ usuario.Nombre }}</h5>
-                                    <p class="card-text">{{ usuario.Apellido }}</p>
-                                    <p class="card-text">{{ usuario.CorreoElectronico }}</p>
-                                    <p class="card-text">{{ usuario.NumeroTelefono }}</p>
-                                  </div>
-                                  
-                            </div>
-                          </div>
-                        </div>
+      <div class="row">
+        <div class="col-lg-16">
+          <div class="card mb-4">
+            <section class="container tarjetas-section">
+              <div class="mt-4">
+                <div class="row">
+                  <div class="col-lg-16">
+                    <div class="card mb-4">
+                      <div class="card-body text-center">
+                        <img [src]="images[0]" style="width: 150px; height: 150px;"> <!-- Muestra la primera imagen -->
+                        <h5 class="card-title">{{ usuario.Nombre }}</h5>
+                        <p class="card-text">{{ usuario.Apellido }}</p>
+                        <p class="card-text">{{ usuario.CorreoElectronico }}</p>
+                        <p class="card-text">{{ usuario.NumeroTelefono }}</p>
+                      </div>
                     </div>
-                </section>
-                
-    
-
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <div class="row justify-content-center">
-        
-        
-        <!-- Las últimas tres tarjetas ahora están en el centro de la página -->
-        <div class="col-md-4">
-            <a routerLink="/usuario_informacionPersonal"> 
-                <div class="card">
-                    <img src="imagen1.jpg" class="card-img-top" alt="Imagen 1">
-                    <div class="card-body">
-                        <h5 class="card-title">Información personal</h5>
-                        <p class="card-text">Administra tu información personal y de seguridad </p>
-                    </div>
-                </div>
-            </a>
-        </div>
+      <!-- Las últimas tres tarjetas ahora están en el centro de la página -->
+      <div class="col-md-4">
+        <a routerLink="/usuario_informacionPersonal">
+          <div class="card">
+           
+            <div class="card-body">
+              <h5 class="card-title">Información personal</h5>
+              <p class="card-text">Administra tu información personal y de seguridad</p>
+            </div>
+          </div>
+        </a>
+      </div>
 
-        <div class="col-md-4">
-            <a routerLink="/administar-unidad"> 
-                <div class="card">
-                    <img src="imagen1.jpg" class="card-img-top" alt="Imagen 1">
-                    <div class="card-body">
-                        <h5 class="card-title">Propiedades</h5>
-                        <p class="card-text">Administra las propiedades en tu poder</p>
-                    </div>
-                </div>
-            </a>
-        </div>
+      <div class="col-md-4">
+        <a routerLink="/administar-unidad">
+          <div class="card">
+           
+            <div class="card-body">
+              <h5 class="card-title">Propiedades</h5>
+              <p class="card-text">Administra las propiedades en tu poder</p>
+            </div>
+          </div>
+        </a>
+      </div>
 
-        <div class="col-md-4">
-            <a routerLink="/agregar-unidad"> <!-- Cambia "/3" según la ID del lugar -->
-                <div class="card">
-                    <img src="imagen1.jpg" class="card-img-top" alt="Imagen 1">
-                    <div class="card-body">
-                        <h5 class="card-title">Agregar Unidad</h5>
-                        <p class="card-text">Agrega unidades, para su puesta en linea </p>
-                    </div>
-                </div>
-            </a>
-        </div>
+      <div class="col-md-4">
+        <a routerLink="/agregar-unidad"> <!-- Cambia "/3" según la ID del lugar -->
+          <div class="card">
+           
+            <div class="card-body">
+              <h5 class="card-title">Agregar Unidad</h5>
+              <p class="card-text">Administra pagos, cobros y formas de pago</p>
+            </div>
+          </div>
+        </a>
+      </div>
     </div>
+  </section>
 
-    <!-- Separación entre las dos grupos de tarjetas -->
-    <div class="row">
-        <div class="col-md-12">
-            <br> <!-- Agrega aquí cualquier elemento de separación que necesites -->
-        </div>
-    </div>
+    </section>
+</div>
+ 
 
-    <!-- Las primeras tres tarjetas 
-    <div class="row">
-        <div class="col-md-4">
-            <a routerLink="/documentos"> 
-                <div class="card">
-                    <img src="imagen1.jpg" class="card-img-top" alt="Imagen 1">
-                    <div class="card-body">
-                        <h5 class="card-title">Documentos</h5>
-                        <p class="card-text">Administracion los datos y documentos legales  </p>
-                    </div>
-                </div>
-            </a>
-        </div>
-
-        <div class="col-md-4">
-            <a routerLink="/notificaiones"> 
-                <div class="card">
-                    <img src="imagen1.jpg" class="card-img-top" alt="Imagen 1">
-                    <div class="card-body">
-                        <h5 class="card-title">Notificaiones</h5>
-                        <p class="card-text">Descripción del lugar y características.</p>
-                    </div>
-                </div>
-            </a>
-        </div>
-
-        <div class="col-md-4">
-            <a routerLink="/procesos"> 
-                <div class="card">
-                    <img src="imagen1.jpg" class="card-img-top" alt="Imagen 1">
-                    <div class="card-body">
-                        <h5 class="card-title">Procesos</h5>
-                        <p class="card-text">Administra los procesos de venta y reservas</p>
-                    </div>
-                </div>
-            </a>
-        </div>
-    </div>
-        -->
+<footer class="bg-dark text-white text-center py-3">
+    <p>&copy; 2023 Terreneitor. Todos los derechos reservados.</p>
+  </footer>
 

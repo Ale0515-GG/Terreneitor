@@ -1,0 +1,16 @@
+
+.background-container {
+    position: relative; /* Para que los elementos absolutos se posicionen con respecto a este contenedor */
+  }
+  
+  .background-container img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 100;
+    opacity: 0.75;
+    width: 100%; /* Asegúrate de que la imagen cubra todo el contenedor */
+    height: 100%;
+    object-fit: cover; /* Ajusta la imagen para que cubra todo el contenedor */
+  }
+  

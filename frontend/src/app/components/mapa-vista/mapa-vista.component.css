@@ -1,8 +1,7 @@
 .mapa-container{
-    position:fixed;
-    top: 0px;
-    right: 0px;
-    width: 100vm;
-    height: 100vh;
-    
+  top: 0px;
+  position: relative;
+  right: 0px;
+  width: 100vw;
+  height: 800px;
 }

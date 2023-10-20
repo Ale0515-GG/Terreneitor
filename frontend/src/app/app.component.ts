@@ -9,10 +9,5 @@ import { LugaresService } from './services/lugares.service';
 export class AppComponent {
   title = 'frontend';
 
-  constructor(private lugarSvc:LugaresService){}
 
-  get localizacionListo(){
-    console.log(this.lugarSvc.localizacion);
-    return this.lugarSvc.localizacionListo;
-  }
 }

@@ -1,5 +1,5 @@
-import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
-import {Map, Marker, Popup} from 'mapbox-gl';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Map, Popup, Marker } from 'mapbox-gl';
 import { LugaresService } from 'src/app/services/lugares.service';
 import { MapaService } from 'src/app/services/mapa.service';
 
@@ -8,34 +8,45 @@ import { MapaService } from 'src/app/services/mapa.service';
   templateUrl: './mapa-vista.component.html',
   styleUrls: ['./mapa-vista.component.css']
 })
-export class MapaVistaComponent implements AfterViewInit{
+export class MapaVistaComponent implements AfterViewInit, OnInit{
 
-@ViewChild('mapDiv') mapDivElement!:ElementRef
+  ngOnInit(): void {
+    console.log(this.ubicacionService.useLocation);
+  }
 
-constructor(private lugarSvc:LugaresService,private mapService:MapaService){}
+  @ViewChild('mapDiv') mapDivElement!: ElementRef;
+  selectedId: string | null = null;
+  places: any;
+
+  constructor(private ubicacionService: LugaresService, private mapaService: MapaService) {}
 
   ngAfterViewInit(): void {
-    if(!this.lugarSvc.localizacion)throw Error('No hay Localizacion')
-    
+    if (!this.ubicacionService.useLocation) {
+      console.error('Ubicación no disponible');
+      return;
+    }
+
     const map = new Map({
       container: this.mapDivElement.nativeElement,
-      style: 'mapbox://styles/mapbox/streets-v12', // style URL
-      center: this.lugarSvc.localizacion,
-      zoom: 14, // starting zoom
-      });
+      style: 'mapbox://styles/mapbox/streets-v10',
+      center: this.ubicacionService.useLocation,
+      zoom: 12,
+    });
 
-      const popup=new Popup().setHTML(`
-        <h6>Estoy aqui<h6>
-        <span>En este lugar</span>
-      `);
 
-      new Marker({color:'red'})
-      .setLngLat(this.lugarSvc.localizacion)
+
+    const popup = new Popup().setHTML(`
+      <h6>Mi Ubicacion</h6>
+      <span></span>
+    `);
+
+    new Marker({ color: 'red' })
+      .setLngLat(this.ubicacionService.useLocation)
       .setPopup(popup)
       .addTo(map);
 
 
-      this.mapService.setMap(map);
+    this.mapaService.setMap(map);
   }
 
 }

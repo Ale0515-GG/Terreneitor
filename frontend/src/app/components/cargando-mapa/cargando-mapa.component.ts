@@ -7,10 +7,6 @@ import { LugaresService } from 'src/app/services/lugares.service';
   styleUrls: ['./cargando-mapa.component.css']
 })
 
-export class CargandoMapaComponent implements OnInit{
-  constructor(){}
+export class CargandoMapaComponent {
 
-  ngOnInit(): void {
-    
-  }
 }
