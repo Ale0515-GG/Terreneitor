@@ -1,9 +1,14 @@
 
-.mapa {
-    position: absolute;
-    top: auto;
-    right: 0;
-    width: auto;
-    height: 100vh;
-  }
-  
+
+/* Estilos CSS para el encabezado h1 con el texto "Descubre lugares" */
+h1.display-4 {
+  font-family: Arial, sans-serif; /* Cambia la fuente según tus preferencias */
+  font-size: 48px; /* Tamaño de fuente personalizado */
+  font-weight: bold; /* Hace que el texto sea más grueso */
+  text-align: center; /* Centra el texto en la página */
+  color: #007BFF; /* Color de texto personalizado */
+  /* Otros estilos que desees aplicar */
+}
+
+
+
