@@ -31,16 +31,9 @@ export class UsuarioService {
   updateNombre(id: string, nombre: string): Observable<Usuario> {
     return this.http.put<Usuario>(`${this.API_URI}/usuario/${id}`, nombre);
   }
-
-  updateApellido(id: string, apellido: string): Observable<Usuario> {
-    return this.http.put<Usuario>(`${this.API_URI}/usuario/${id}`,apellido);
+  updateUsuario(id: number, usuario: Usuario): Observable<Usuario> {
+    return this.http.put<Usuario>(`${this.API_URI}/usuario/${id}`, usuario);
   }
+  
 
-  updateCorreoElectronico(id: string, correo: string): Observable<Usuario> {
-    return this.http.put<Usuario>(`${this.API_URI}/usuario/${id}`, correo);
-  }
-
-  updateNumeroTelefono(id: string, telefono: string): Observable<Usuario> {
-    return this.http.put<Usuario>(`${this.API_URI}/usuario/${id}`,  telefono );
-  }
 }

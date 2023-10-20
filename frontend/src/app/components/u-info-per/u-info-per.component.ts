@@ -107,4 +107,17 @@ export class UInfoPerComponent implements OnInit {
       console.error('El objeto de usuario o su ID son undefined.');
     }
   }
+  guardarCambios() {
+    // Llama a tu servicio para actualizar los datos del usuario
+    this.usuarioService.updateUsuario(this.usuario.ID, this.usuario)
+      .subscribe(
+        (res) => {
+          console.log('Datos del usuario actualizados:', res);
+        },
+        (err) => {
+          console.error('Error al actualizar los datos del usuario:', err);
+        }
+      );
+  }
+  
 }
