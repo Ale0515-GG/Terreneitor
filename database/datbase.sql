@@ -13,6 +13,9 @@ CREATE TABLE Usuarios (
 );
 select * from Usuarios;
 
+
+
+
 CREATE TABLE Direcciones (
     ID INT AUTO_INCREMENT PRIMARY KEY,
     Pais VARCHAR(100),
@@ -31,20 +34,11 @@ CREATE TABLE unidad (
     TipoPropiedad VARCHAR(100),
     PrecioPorNoche DECIMAL(10, 2),
     DireccionID VARCHAR(255),
-    imagen VARCHAR(100)
+    imagen VARCHAR(100),
+    IdUsuario INT,
+    FOREIGN KEY (IdUsuario) REFERENCES Usuarios(ID)
 );
 
-CREATE TABLE Reservas (
-    ID INT AUTO_INCREMENT PRIMARY KEY,
-    HuespedID INT,
-    PropiedadID INT,
-    FechaInicio DATE,
-    FechaFinalizacion DATE,
-    EstadoReserva VARCHAR(50),
-    PrecioTotal DECIMAL(10, 2),
-    FOREIGN KEY (HuespedID) REFERENCES Usuarios(ID),
-    FOREIGN KEY (PropiedadID) REFERENCES Propiedades(ID)
-);
 
 
 CREATE TABLE Calificaciones (

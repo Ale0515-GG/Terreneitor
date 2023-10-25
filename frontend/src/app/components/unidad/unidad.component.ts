@@ -11,10 +11,8 @@ declare var paypal: any;
   styleUrls: ['./unidad.component.css']
 })
 export class UnidadComponent implements OnInit {
-  i: number = 0;
-  id: number = 0;
+  unidad: any; // Variable para almacenar la información de la unidad
 
-  unidad: any; // Declarar una variable para almacenar la unidad
   @ViewChild('paypal', { static: true }) paypalElement!: ElementRef;
 
   producto = {
@@ -22,7 +20,6 @@ export class UnidadComponent implements OnInit {
     precio: 11.11,
     img: 'imagen'
   };
-  title = 'angular-paypal-payment';
 
   constructor(
     private route: ActivatedRoute,
@@ -32,50 +29,46 @@ export class UnidadComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // Obtener la variable global 'id' y convertirla a tipo 'number'
-    const globalID = this.idStorageService.getID();
-
-    this.id = globalID ? parseInt(globalID, 10) : 0; // Puedes definir un valor predeterminado si no se encuentra la variable global
-
-    this.getUnidad();
+    // Obtener el ID de la unidad de la ruta
+    this.route.paramMap.subscribe(params => {
+      const id = params.get('id');
+      if (id) {
+        // Llamar al servicio para obtener los detalles de la unidad
+        this.unidadService.getUnidad(id).subscribe(
+          res => {
+            this.unidad = res; // Almacena la información de la unidad
+          },
+          err => {
+            console.log(err);
+            // Manejar el error, por ejemplo, redirigir a una página de error
+          }
+        );
+      }
+    });
 
     paypal
       .Buttons({
-        createOrder:(data:any,actions:any)=>{
-        return actions.order.create({
-          purchase_units:[
-          {
-            description:this.producto.describe,
-            amount :{
-              currency_code:'MXN',
-              value:this.producto.precio
-            }
-          }
-          ]
-        })
+        createOrder: (data: any, actions: any) => {
+          return actions.order.create({
+            purchase_units: [
+              {
+                description: this.producto.describe,
+                amount: {
+                  currency_code: 'MXN',
+                  value: this.producto.precio
+                }
+              }
+            ]
+          });
         },
-        onApprove:async (data:any,actions:any)=>{
-          const order =await actions.order.capture();
-          console.log(order)
+        onApprove: async (data: any, actions: any) => {
+          const order = await actions.order.capture();
+          console.log(order);
         },
         onError: function (err: any) {
           console.log(err);
         }
       })
       .render(this.paypalElement.nativeElement);
-  }
-
-  getUnidad() {
-    if (this.id) {
-      this.unidadService.getUnidad(this.id.toString()).subscribe(
-        (data: any) => {
-          this.unidad = data; // Almacena los datos de la unidad en la variable unidad
-          // Luego, puedes actualizar tus elementos HTML con estos datos
-        },
-        (error) => {
-          console.error('Error al obtener los detalles de la unidad:', error);
-        }
-      );
-    }
   }
 }

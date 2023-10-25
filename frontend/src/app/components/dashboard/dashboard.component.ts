@@ -38,12 +38,12 @@ export class DashboardComponent implements OnInit {
 
 
 
-  
   guardarIDEnVariableGlobal(id: string) {
     this.idStorageService.setID(id);
-    console.log('Nombre de usuario:', id);
-        this.router.navigate(['/info-unidad']);
+    console.log('ID de la unidad:', id);
+    this.router.navigate(['/info-unidad', id]); // Redirige a la ruta dinámica con el ID
   }
+  
 
   get isUserLocationReady(){
     return this.ubicacionService.isUserLocationReady;
