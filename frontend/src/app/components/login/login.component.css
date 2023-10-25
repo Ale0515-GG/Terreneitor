@@ -1,0 +1,25 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.content-container {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra verticalmente el contenido */
+    align-items: center; /* Centra horizontalmente el contenido */
+    height: 100vh; /* Establece la altura del contenedor para ocupar toda la pantalla */
+}
+
+
+footer {
+    flex-shrink: 0;
+    /* El pie de página no se encogerá para ajustarse al contenido */
+}
