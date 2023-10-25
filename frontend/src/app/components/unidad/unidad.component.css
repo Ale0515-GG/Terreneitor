@@ -1,0 +1,45 @@
+body {
+    background-image: url('../../../assets/img/fondo.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Opcional, para que la imagen se mantenga en su lugar al hacer scroll */
+    position: relative;
+    z-index: -1; /* Coloca la imagen detrás de los demás elementos */
+    opacity: 0.75;
+}
+
+.card {
+    background-color: rgba(255, 255, 255, 0.8); /* Fondo con opacidad */
+}
+
+html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif; /* Elige la fuente que desees */
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100%;
+}
+
+.background-image {
+    width: 100%;
+    object-fit: cover;
+    opacity: 0.75;
+}
+
+footer {
+    background-color: #0000; /* Cambia el color de fondo del footer según tu preferencia */
+    text-align: center;
+    padding: 10px 0;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Establece la altura del contenedor para ocupar toda la pantalla */
+}
