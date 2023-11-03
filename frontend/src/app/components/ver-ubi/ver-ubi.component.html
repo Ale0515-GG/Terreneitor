@@ -26,11 +26,14 @@
 
           </div>
         </div>
+
+
       </div>
       <div class="mapa">
         <app-cargando-mapa *ngIf="!isUserLocationReady; else mapReady" ></app-cargando-mapa>
         <ng-template #mapReady>
           <app-mapa-vista></app-mapa-vista>
+          
 
         </ng-template>
       </div>

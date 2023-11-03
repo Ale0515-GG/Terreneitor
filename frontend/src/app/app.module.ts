@@ -42,6 +42,7 @@ import { BuscarComponent } from './components/buscar/buscar.component';
 import { VerUnidadesComponent } from './components/ver-unidades/ver-unidades.component';
 import { VerUbiComponent } from './components/ver-ubi/ver-ubi.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { BtnMyLocationComponent } from './components/btn-my-location/btn-my-location.component';
 
 //import angular fire 
 
@@ -76,6 +77,7 @@ import { FooterComponent } from './components/footer/footer.component';
        VerUnidadesComponent,
        VerUbiComponent,
        FooterComponent,
+       BtnMyLocationComponent,
    
   ],
   imports: [
