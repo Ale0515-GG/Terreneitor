@@ -19,6 +19,8 @@ import { MapaComponent } from './components/mapa/mapa.component';
 
 import { VerUbiComponent } from './components/ver-ubi/ver-ubi.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { ConsejosComponent } from './components/consejos/consejos.component';
+
 const routes: Routes = [
   {path:'',redirectTo:'login',pathMatch:'full'},
 
@@ -33,6 +35,10 @@ const routes: Routes = [
   { path: 'info-unidad/:id', component: UnidadComponent },
   {path: 'ubicacion',component:VerUbiComponent},
   {path: 'agregar-unidad',component:AgregarUnidadComponent},
+  {path: 'consejos',component:ConsejosComponent},
+
+
+
 
 
   {path: 'administar-unidad',component:AdministarUnidadComponent},

@@ -43,7 +43,9 @@ import { VerUnidadesComponent } from './components/ver-unidades/ver-unidades.com
 import { VerUbiComponent } from './components/ver-ubi/ver-ubi.component';
 import { FooterComponent } from './components/footer/footer.component';
 
-//import angular fire 
+import { YoutubePipe } from './pipe/youtube.pipe';
+import { ConsejosComponent } from './components/consejos/consejos.component';
+
 
 
 @NgModule({
@@ -76,6 +78,9 @@ import { FooterComponent } from './components/footer/footer.component';
        VerUnidadesComponent,
        VerUbiComponent,
        FooterComponent,
+      
+       YoutubePipe,
+       ConsejosComponent,
    
   ],
   imports: [

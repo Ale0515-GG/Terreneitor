@@ -11,15 +11,16 @@ declare var paypal: any;
   styleUrls: ['./unidad.component.css']
 })
 export class UnidadComponent implements OnInit {
-  unidad: any; // Variable para almacenar la información de la unidad
+  unidad: any; 
 
   @ViewChild('paypal', { static: true }) paypalElement!: ElementRef;
+  
 
-  producto = {
-    describe: 'Unidad en venta',
-    precio: 11.11,
-    img: 'imagen'
-  };
+// esta parte 
+
+
+  title='angular-paypal-payment';
+
 
   constructor(
     private route: ActivatedRoute,
@@ -52,10 +53,11 @@ export class UnidadComponent implements OnInit {
           return actions.order.create({
             purchase_units: [
               {
-                description: this.producto.describe,
+                nombre:this.unidad.NombrePropiedad,
+                descripcion:this.unidad.Descripcion,
                 amount: {
                   currency_code: 'MXN',
-                  value: this.producto.precio
+                  value: this.unidad.PrecioPorNoche
                 }
               }
             ]
