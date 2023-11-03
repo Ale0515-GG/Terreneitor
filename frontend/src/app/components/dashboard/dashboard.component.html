@@ -1,45 +1,53 @@
 <app-narvar></app-narvar>
-
-<div class="container text-center mt-5">
+<div class="col-12">
   <div class="card">
-      <h1><strong class="mt-4">Sobre nosotros </strong></h1>
-      <div class="container mt-2">
-          <div class="row">
-              <div *ngFor="let v of videos" class="col-4">
-                <youtube-player [videoId]="v.video" suggestedQuality="highres" [height]="200" [width]="300"></youtube-player>
-              </div>
-            </div>
-        </div>
-    </div>
- </div>
- 
-
-  <div class="container">
-    <div class="row">
-      <div class="col-md-18">
-        <h1 class="display-4">Descubre lugares</h1>
-
-    <div class="container">
+    <h1><strong class="mt-4">Sobre nosotros</strong></h1>
+    <div class="container mt-6">
       <div class="row">
-        <div class="col-md-4" *ngFor="let unidad of unidades">
-          <a (click)="guardarIDEnVariableGlobal(unidad.ID)">
-            <div class="card">
-              <img src="../../../assets/img/cargando.jpg" class="card-img-top" [alt]="unidad.nombre">
-              <div class="card-body">
-                <h5 class="card-title">{{ unidad.ID }}</h5>
-                <h5 class="card-title">{{ unidad.NombrePropiedad }}</h5>
-                <p class="card-text">{{ unidad.Descripcion }}</p>
-              
-              </div>
-            </div>
-          </a>
+        <div *ngFor="let v of videos" class="col-6">
+          <youtube-player [videoId]="v.video" suggestedQuality="highres" [height]="300" [width]="600"></youtube-player>
+        </div>
+        <div class="col-2">
+          <div>
+            <p>
+              Bienvenidos a la presentación de Terreneitor, la plataforma de compra y venta de casas y propiedades que está cambiando la forma en que encuentras tu hogar perfecto. ¿Estás buscando la casa de tus sueños o deseas vender una propiedad de manera eficiente? ¡Terreneitor es la solución que has estado esperando!
+            </p>
+            <p>
+              Acerca de Terreneitor:
+            </p>
+            <p>
+              Terreneitor es mucho más que una aplicación inmobiliaria convencional. Es una experiencia única diseñada para conectar a compradores y vendedores de propiedades de manera efectiva y segura. ¿Qué nos hace especiales?
+            </p>
+          </div>
         </div>
       </div>
     </div>
-  
-    
-    
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="display-4">Descubre lugares</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4" *ngFor="let unidad of unidades">
+      <a (click)="guardarIDEnVariableGlobal(unidad.ID)">
+        <div class="card">
+          <img src="../../../assets/img/cargando.jpg" class="card-img-top" [alt]="unidad.nombre">
+          <div class="card-body">
+            <h5 class="card-title">{{ unidad.ID }}</h5>
+            <h5 class="card-title">{{ unidad.NombrePropiedad }}</h5>
+            <p class="card-text">{{ unidad.Descripcion }}</p>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
 <footer class="bg-dark text-white text-center py-3">
   <p>&copy; 2023 Terreneitor. Todos los derechos reservados.</p>
 </footer>
-
