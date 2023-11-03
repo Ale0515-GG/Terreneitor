@@ -80,13 +80,13 @@ import {YouTubePlayerModule} from '@angular/youtube-player';
        VerUnidadesComponent,
        VerUbiComponent,
        FooterComponent,
-<<<<<<< HEAD
+
        BtnMyLocationComponent,
-=======
+
       
        YoutubePipe,
        ConsejosComponent,
->>>>>>> ba84d1feb487367c69db18f5b311f7cd2cd8f26a
+
    
   ],
   imports: [
