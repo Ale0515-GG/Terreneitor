@@ -49,6 +49,19 @@ import { YoutubePipe } from './pipe/youtube.pipe';
 import { ConsejosComponent } from './components/consejos/consejos.component';
 import {YouTubePlayerModule} from '@angular/youtube-player';
 
+//login Red sosical 
+import {
+  FacebookLoginProvider,
+  SocialLoginModule,
+  SocialAuthServiceConfig,
+} from '@abacritt/angularx-social-login';
+import { ReactiveFormsModule } from '@angular/forms';
+
+
+
+
+///red
+
 
 @NgModule({
   declarations: [
@@ -90,6 +103,10 @@ import {YouTubePlayerModule} from '@angular/youtube-player';
    
   ],
   imports: [
+    //login redsocial
+    SocialLoginModule,
+    ReactiveFormsModule,
+    //
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
@@ -104,7 +121,24 @@ import {YouTubePlayerModule} from '@angular/youtube-player';
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideStorage(() => getStorage()),
   ],
-  providers: [UserglobalService],
-  bootstrap: [AppComponent]
+  providers: [
+    UserglobalService,
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: FacebookLoginProvider.PROVIDER_ID,
+            provider: new FacebookLoginProvider('644370744353231'),
+          },
+        ],
+      } as SocialAuthServiceConfig,
+    },
+  ],
+  
+  bootstrap: [AppComponent],
+
 })
+
 export class AppModule { }

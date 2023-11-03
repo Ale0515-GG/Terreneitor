@@ -73,4 +73,19 @@ export class UnidadComponent implements OnInit {
       })
       .render(this.paypalElement.nativeElement);
   }
+
+  deleteUnidad(id: string) {
+    this.unidadService.deleteUnidad(id).subscribe(
+      () => {
+        // Redirige a la página deseada después de eliminar la unidad
+        this.router.navigate(['/otro-componente']); // Cambia '/otro-componente' por la URL real
+      },
+      (err) => {
+        console.log(err);
+        // Maneja el error, por ejemplo, mostrando un mensaje al usuario
+      }
+    );
+  }
 }
+  
+

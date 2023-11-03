@@ -6,6 +6,9 @@ import { User } from 'src/app/interfaces/user';
 import { ErrorService } from 'src/app/services/error.service';
 import { UserService } from 'src/app/services/user.service';
 
+import { FacebookLoginProvider } from '@abacritt/angularx-social-login';
+import { SocialAuthService } from '@abacritt/angularx-social-login';
+
 import { UserglobalService } from 'src/app/services/userglobal.service';
 @Component({
   selector: 'app-login',
@@ -23,8 +26,10 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private _errorService: ErrorService,
     private usergo: UserglobalService,
-    private userService: UserService // Inyecta el servicio UserService
-  ) { }
+    private userService: UserService,
+    private authService: SocialAuthService
+   
+    ) { }
 
   ngOnInit(): void {
   }
@@ -55,4 +60,20 @@ export class LoginComponent implements OnInit {
       },
       // ...
     });
-  }}    
+  }
+
+  signInWithFB(): void {
+    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID).then(
+      data =>{
+        console.log(data);
+        this.router.navigate(['/dashboard']);
+      }
+    );
+  }
+
+  signOut(): void {
+    this.authService.signOut();
+  }
+ 
+
+}    

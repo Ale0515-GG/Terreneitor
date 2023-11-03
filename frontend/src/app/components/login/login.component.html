@@ -1,10 +1,17 @@
 <div class="wrapper">
 
 <div class="wrapper">
+ 
+
     <div *ngIf="!loading" class="body">
         <img class="logo" src="../../../assets/img/key.png" alt="img login">
         <h3 class="mb-2">Login</h3>
 
+        <div class="card-body">
+            <button class="btn btn-outline-primary btn-lg btn-block" (click)="signInWithFB()">
+                <i class="fab fa-facebook"></i>Iniciar Sesión con Facebook
+            </button>
+        </div>
 
         <div class="form-floating mb-3 mt-3">
 
