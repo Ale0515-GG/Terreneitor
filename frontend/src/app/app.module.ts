@@ -43,9 +43,10 @@ import { VerUnidadesComponent } from './components/ver-unidades/ver-unidades.com
 import { VerUbiComponent } from './components/ver-ubi/ver-ubi.component';
 import { FooterComponent } from './components/footer/footer.component';
 
+//youtybe 
 import { YoutubePipe } from './pipe/youtube.pipe';
 import { ConsejosComponent } from './components/consejos/consejos.component';
-
+import {YouTubePlayerModule} from '@angular/youtube-player';
 
 
 @NgModule({
@@ -88,6 +89,7 @@ import { ConsejosComponent } from './components/consejos/consejos.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    YouTubePlayerModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
       timeOut:4000,

@@ -1,5 +1,18 @@
 <app-narvar></app-narvar>
 
+<div class="container text-center mt-5">
+  <div class="card">
+      <h1><strong class="mt-4">Sobre nosotros </strong></h1>
+      <div class="container mt-2">
+          <div class="row">
+              <div *ngFor="let v of videos" class="col-4">
+                <youtube-player [videoId]="v.video" suggestedQuality="highres" [height]="200" [width]="300"></youtube-player>
+              </div>
+            </div>
+        </div>
+    </div>
+ </div>
+ 
 
   <div class="container">
     <div class="row">

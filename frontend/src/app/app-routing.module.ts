@@ -21,6 +21,9 @@ import { VerUbiComponent } from './components/ver-ubi/ver-ubi.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ConsejosComponent } from './components/consejos/consejos.component';
 
+
+
+
 const routes: Routes = [
   {path:'',redirectTo:'login',pathMatch:'full'},
 
