@@ -21,10 +21,19 @@ export class DashboardComponent implements OnInit {
 
  value: string = '';
 
+videos=[
+  {
+    video:'bk3AWiQT34M'
+  }
+]
  constructor(private ubicacionService:LugaresService,private unidadservice: UnidadService, private router: Router, private route: ActivatedRoute, private usergo: UserglobalService, private idStorageService: IdStorageService) {}
 
   ngOnInit(): void {
     this.getUnidades();
+    
+    const tag = document.createElement('script');
+    tag.src = 'https://www.youtube.com/iframe_api';
+    document.body.appendChild(tag);
   }
 
   getUnidades() {

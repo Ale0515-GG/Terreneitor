@@ -44,7 +44,10 @@ import { VerUbiComponent } from './components/ver-ubi/ver-ubi.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { BtnMyLocationComponent } from './components/btn-my-location/btn-my-location.component';
 
-//import angular fire 
+//youtybe 
+import { YoutubePipe } from './pipe/youtube.pipe';
+import { ConsejosComponent } from './components/consejos/consejos.component';
+import {YouTubePlayerModule} from '@angular/youtube-player';
 
 
 @NgModule({
@@ -77,7 +80,13 @@ import { BtnMyLocationComponent } from './components/btn-my-location/btn-my-loca
        VerUnidadesComponent,
        VerUbiComponent,
        FooterComponent,
+<<<<<<< HEAD
        BtnMyLocationComponent,
+=======
+      
+       YoutubePipe,
+       ConsejosComponent,
+>>>>>>> ba84d1feb487367c69db18f5b311f7cd2cd8f26a
    
   ],
   imports: [
@@ -85,6 +94,7 @@ import { BtnMyLocationComponent } from './components/btn-my-location/btn-my-loca
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    YouTubePlayerModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
       timeOut:4000,

@@ -1,0 +1,41 @@
+<app-narvar></app-narvar>
+
+<div class="container text-center mt-5">
+    <div class="card">
+        <h1 class="mt-4"><strong>Consejos para Comprar y Vender Casas</strong></h1>
+        <div class="container mt-4">
+            <div class="row">
+                <div *ngFor="let v of videos" class="col-4">
+                    <youtube-player [videoId]="v.video" suggestedQuality="highres" [height]="200" [width]="300"></youtube-player>
+                </div>
+                <div class="col-md-6">
+                    <section id="vender">
+                        <h2>Consejos para Vender una Casa</h2>
+                        <p>Vender una casa puede ser un proceso complejo. Aquí hay algunos consejos para tener en cuenta:</p>
+                        <ul>
+                            <li>Preparación de la propiedad: Asegúrate de que la propiedad esté en buenas condiciones y atractiva para los compradores.</li>
+                            <li>Precio competitivo: Investiga el mercado para establecer un precio competitivo.</li>
+                            <li>Contrata a un agente inmobiliario: Un agente con experiencia puede facilitar el proceso de venta.</li>
+                            <li>Marketing efectivo: Utiliza estrategias de marketing, como fotografías de alta calidad y publicidad en línea.</li>
+                        </ul>
+                    </section>
+
+                    <section id="comprar">
+                        <h2>Consejos para Comprar una Casa</h2>
+                        <p>Comprar una casa es una decisión importante. Aquí te ofrecemos algunos consejos para hacerlo con éxito:</p>
+                        <ul>
+                            <li>Definir tus necesidades: Haz una lista de lo que buscas en una casa, como ubicación, tamaño y características.</li>
+                            <li>Presupuesto: Establece un presupuesto realista y preaprobación de hipoteca si es necesario.</li>
+                            <li>Inspecciones: Realiza inspecciones para verificar el estado de la propiedad antes de comprar.</li>
+                            <li>Negociación: No tengas miedo de negociar el precio y los términos de compra.</li>
+                        </ul>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="bg-dark text-white text-center py-3">
+    <p>&copy; 2023 Terreneitor. Todos los derechos reservados.</p>
+</footer>
