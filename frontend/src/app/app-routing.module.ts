@@ -20,6 +20,7 @@ import { MapaComponent } from './components/mapa/mapa.component';
 import { VerUbiComponent } from './components/ver-ubi/ver-ubi.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ConsejosComponent } from './components/consejos/consejos.component';
+import { UsuariosComponent } from './components/usuarios/usuarios.component';
 
 
 
@@ -44,14 +45,16 @@ const routes: Routes = [
 
 
 
+
   {path: 'administar-unidad',component:AdministarUnidadComponent},
   {path: 'notificaiones',component:NoficacionesComponent},
   {path: 'editar-unidad',component:EditarUnidadComponent},
   {path: 'procesos',component:UProcesosComponent},
   {path: 'mensajes',component:MensajesComponent},
   {path: 'documentos',component:UDocumentosComponent},
+
   {path: 'usuario_informacionPersonal',component:UInfoPerComponent},
-  {path: 'mapa',component:MapaComponent},
+{path: 'infromacion',component:UsuariosComponent},
 
   {path:'**',redirectTo:'login',pathMatch:'full'}
 

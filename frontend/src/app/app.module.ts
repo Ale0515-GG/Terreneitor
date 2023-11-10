@@ -56,6 +56,7 @@ import {
   SocialAuthServiceConfig,
 } from '@abacritt/angularx-social-login';
 import { ReactiveFormsModule } from '@angular/forms';
+import { UsuariosComponent } from './components/usuarios/usuarios.component';
 
 
 
@@ -99,6 +100,7 @@ import { ReactiveFormsModule } from '@angular/forms';
       
        YoutubePipe,
        ConsejosComponent,
+       UsuariosComponent,
 
    
   ],

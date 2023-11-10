@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import { UserglobalService } from 'src/app/services/userglobal.service';
 import { Storage, ref, uploadBytes, listAll, getDownloadURL, deleteObject } from '@angular/fire/storage';
+
 @Component({
   selector: 'app-usuario',
   templateUrl: './usuario.component.html',
