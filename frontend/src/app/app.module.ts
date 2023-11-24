@@ -52,7 +52,11 @@ import {
   SocialAuthServiceConfig,
 } from '@abacritt/angularx-social-login';
 import { ReactiveFormsModule } from '@angular/forms';
+
 import { MapsModule } from './maps/maps.module';
+
+import { UsuariosComponent } from './components/usuarios/usuarios.component';
+
 
 
 import { MapViewComponent } from './components/mapita/maps/components/map-view/map-view.component';
@@ -88,6 +92,12 @@ import { LoadingComponent } from './components/mapita/maps/components/loading/lo
     FooterComponent,
     YoutubePipe,
     ConsejosComponent,
+    BtnMyLocationComponent,
+
+      
+       YoutubePipe,
+       ConsejosComponent,
+       UsuariosComponent,
   ],
   imports: [
     SocialLoginModule,

@@ -19,6 +19,7 @@ import { MensajesComponent } from './components/mensajes/mensajes.component';
 
 import { FooterComponent } from './components/footer/footer.component';
 import { ConsejosComponent } from './components/consejos/consejos.component';
+import { UsuariosComponent } from './components/usuarios/usuarios.component';
 
 import { MapViewComponent } from './components/mapita/maps/components/map-view/map-view.component';
 import { LoadingComponent } from './components/mapita/maps/components/loading/loading.component';
@@ -46,6 +47,7 @@ const routes: Routes = [
 
 
 
+
   {path: 'administar-unidad',component:AdministarUnidadComponent},
   {path: 'notificaiones',component:NoficacionesComponent},
   {path: 'editar-unidad',component:EditarUnidadComponent},
@@ -54,7 +56,11 @@ const routes: Routes = [
   {path: 'mapita',component:MapViewComponent},
   {path: 'cargar',component:LoadingComponent},
   {path: 'documentos',component:UDocumentosComponent},
+
   {path: 'usuario_informacionPersonal',component:UInfoPerComponent},
+
+{path: 'infromacion',component:UsuariosComponent},
+
 
   {path:'**',redirectTo:'login',pathMatch:'full'}
 

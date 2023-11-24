@@ -1,14 +1,17 @@
 <app-narvar></app-narvar>
+<br>
+
+
 <div class="col-12">
-  <div class="card">
-    <h1><strong class="mt-4">Sobre nosotros</strong></h1>
+  <div class="card bg-dark text-white text-right">
+    <h1 class="text-justify"><strong class="mt-4">Sobre nosotros</strong></h1>
     <div class="container mt-6">
       <div class="row">
         <div *ngFor="let v of videos" class="col-6">
           <youtube-player [videoId]="v.video" suggestedQuality="highres" [height]="300" [width]="600"></youtube-player>
         </div>
-        <div class="col-2">
-          <div>
+        <div class="col-4 offset-2">
+          <div class="text-justify">
             <p>
               Bienvenidos a la presentación de Terreneitor, la plataforma de compra y venta de casas y propiedades que está cambiando la forma en que encuentras tu hogar perfecto. ¿Estás buscando la casa de tus sueños o deseas vender una propiedad de manera eficiente? ¡Terreneitor es la solución que has estado esperando!
             </p>
@@ -24,6 +27,8 @@
     </div>
   </div>
 </div>
+
+<br>
 
 
 <div class="container">
@@ -41,7 +46,10 @@
             <h5 class="card-title">{{ unidad.ID }}</h5>
             <h5 class="card-title">{{ unidad.NombrePropiedad }}</h5>
             <p class="card-text">{{ unidad.Descripcion }}</p>
+
             <p class="card-text">{{ unidad.PrecioPorNoche }}</p>
+
+            <p class="card-text">$ {{ unidad.PrecioPorNoche }} Mx </p>
           </div>
         </div>
       </a>
