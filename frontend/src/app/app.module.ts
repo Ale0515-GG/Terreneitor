@@ -28,21 +28,17 @@ import { NoficacionesComponent } from './components/noficaciones/noficaciones.co
 import { UProcesosComponent } from './components/u-procesos/u-procesos.component';
 import { UDocumentosComponent } from './components/u-documentos/u-documentos.component';
 import { MensajesComponent } from './components/mensajes/mensajes.component';
-import { CargandoMapaComponent } from './components/cargando-mapa/cargando-mapa.component';
-import { MapaVistaComponent } from './components/mapa-vista/mapa-vista.component';
-import { BtnLocalizacionComponent } from './components/btn-localizacion/btn-localizacion.component';
+
 
 import { UserglobalService } from './services/userglobal.service';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideStorage,getStorage } from '@angular/fire/storage';
-import { MapaComponent } from './components/mapa/mapa.component';
-import { ResultsComponent } from './components/results/results.component';
-import { BuscarComponent } from './components/buscar/buscar.component';
+
 import { VerUnidadesComponent } from './components/ver-unidades/ver-unidades.component';
-import { VerUbiComponent } from './components/ver-ubi/ver-ubi.component';
+
 import { FooterComponent } from './components/footer/footer.component';
-import { BtnMyLocationComponent } from './components/btn-my-location/btn-my-location.component';
+
 
 //youtybe 
 import { YoutubePipe } from './pipe/youtube.pipe';
@@ -56,15 +52,19 @@ import {
   SocialAuthServiceConfig,
 } from '@abacritt/angularx-social-login';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MapsModule } from './maps/maps.module';
 
 
-
+import { MapViewComponent } from './components/mapita/maps/components/map-view/map-view.component';
+import { LoadingComponent } from './components/mapita/maps/components/loading/loading.component';
 
 ///red
 
 
 @NgModule({
   declarations: [
+    MapViewComponent,
+    LoadingComponent,
     AppComponent,
     LoginComponent,
     SignInComponent,
@@ -73,56 +73,41 @@ import { ReactiveFormsModule } from '@angular/forms';
     SpinnerComponent,
     UsuarioComponent,
     NarvarComponent,
- 
     UInfoPerComponent,
-       UPagoscobrosComponent,
-       UnidadComponent,
-       AgregarUnidadComponent,
-       EditarUnidadComponent,
-       AdministarUnidadComponent,
-       NoficacionesComponent,
-       UProcesosComponent,
-       UDocumentosComponent,
-       MensajesComponent,
-       CargandoMapaComponent,
-       MapaVistaComponent,
-       BtnLocalizacionComponent,
-       MapaComponent,
-       ResultsComponent,
-       BuscarComponent,
-       VerUnidadesComponent,
-       VerUbiComponent,
-       FooterComponent,
+    UPagoscobrosComponent,
+    UnidadComponent,
+    AgregarUnidadComponent,
+    EditarUnidadComponent,
+    AdministarUnidadComponent,
+    NoficacionesComponent,
+    UProcesosComponent,
+    UDocumentosComponent,
+    MensajesComponent,
 
-       BtnMyLocationComponent,
-
-      
-       YoutubePipe,
-       ConsejosComponent,
-
-   
+    VerUnidadesComponent,
+    FooterComponent,
+    YoutubePipe,
+    ConsejosComponent,
   ],
   imports: [
-    //login redsocial
     SocialLoginModule,
     ReactiveFormsModule,
-    //
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    MapsModule,
     YouTubePlayerModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
-      timeOut:4000,
-      positionClass:'toast-bottom-right',
-      preventDuplicates:true,
+      timeOut: 4000,
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
     }),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideStorage(() => getStorage()),
   ],
   providers: [
-    UserglobalService,
     {
       provide: 'SocialAuthServiceConfig',
       useValue: {
@@ -136,9 +121,7 @@ import { ReactiveFormsModule } from '@angular/forms';
       } as SocialAuthServiceConfig,
     },
   ],
-  
   bootstrap: [AppComponent],
-
 })
 
 export class AppModule { }

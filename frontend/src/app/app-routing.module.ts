@@ -15,11 +15,13 @@ import { NoficacionesComponent } from './components/noficaciones/noficaciones.co
 import { UProcesosComponent } from './components/u-procesos/u-procesos.component';
 import { UDocumentosComponent } from './components/u-documentos/u-documentos.component';
 import { MensajesComponent } from './components/mensajes/mensajes.component';
-import { MapaComponent } from './components/mapa/mapa.component';
 
-import { VerUbiComponent } from './components/ver-ubi/ver-ubi.component';
+
 import { FooterComponent } from './components/footer/footer.component';
 import { ConsejosComponent } from './components/consejos/consejos.component';
+
+import { MapViewComponent } from './components/mapita/maps/components/map-view/map-view.component';
+import { LoadingComponent } from './components/mapita/maps/components/loading/loading.component';
 
 
 
@@ -36,7 +38,7 @@ const routes: Routes = [
   {path: 'pagos',component:UPagoscobrosComponent},
   {path: 'info-unidad',component:UnidadComponent},
   { path: 'info-unidad/:id', component: UnidadComponent },
-  {path: 'ubicacion',component:VerUbiComponent},
+  
   {path: 'agregar-unidad',component:AgregarUnidadComponent},
   {path: 'consejos',component:ConsejosComponent},
 
@@ -49,9 +51,10 @@ const routes: Routes = [
   {path: 'editar-unidad',component:EditarUnidadComponent},
   {path: 'procesos',component:UProcesosComponent},
   {path: 'mensajes',component:MensajesComponent},
+  {path: 'mapita',component:MapViewComponent},
+  {path: 'cargar',component:LoadingComponent},
   {path: 'documentos',component:UDocumentosComponent},
   {path: 'usuario_informacionPersonal',component:UInfoPerComponent},
-  {path: 'mapa',component:MapaComponent},
 
   {path:'**',redirectTo:'login',pathMatch:'full'}
 
@@ -61,4 +64,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
+
 export class AppRoutingModule { }

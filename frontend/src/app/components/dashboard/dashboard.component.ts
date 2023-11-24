@@ -1,4 +1,4 @@
-import { LugaresService } from 'src/app/services/lugares.service';
+
 import { Component, OnInit } from '@angular/core';
 import { Unidad } from 'src/app/interfaces/unidad';
 import { UnidadService } from 'src/app/services/unidad/unidad.service';
@@ -26,7 +26,7 @@ videos=[
     video:'bk3AWiQT34M'
   }
 ]
- constructor(private ubicacionService:LugaresService,private unidadservice: UnidadService, private router: Router, private route: ActivatedRoute, private usergo: UserglobalService, private idStorageService: IdStorageService) {}
+ constructor(private unidadservice: UnidadService, private router: Router, private route: ActivatedRoute, private usergo: UserglobalService, private idStorageService: IdStorageService) {}
 
   ngOnInit(): void {
     this.getUnidades();
@@ -54,11 +54,7 @@ videos=[
   }
   
 
-  get isUserLocationReady(){
-    return this.ubicacionService.isUserLocationReady;
-  }
-
-
+  
 
 
 
