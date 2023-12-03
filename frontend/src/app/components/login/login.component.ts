@@ -10,6 +10,11 @@ import { FacebookLoginProvider } from '@abacritt/angularx-social-login';
 import { SocialAuthService } from '@abacritt/angularx-social-login';
 
 import { UserglobalService } from 'src/app/services/userglobal.service';
+import { usersRed } from '../../interfaces/usersRed';
+import { UsuarioService } from 'src/app/services/usuario/usuario.service';
+
+
+import { Usuario } from 'src/app/interfaces/usuario';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -19,6 +24,7 @@ export class LoginComponent implements OnInit {
   username: string = '';
   password: string = '';
   loading: boolean = false;
+ 
 
   constructor(
     private toastr: ToastrService,
@@ -27,7 +33,8 @@ export class LoginComponent implements OnInit {
     private _errorService: ErrorService,
     private usergo: UserglobalService,
     private userService: UserService,
-    private authService: SocialAuthService
+    private authService: SocialAuthService,
+    private UsuarioService:UsuarioService
    
     ) { }
 
@@ -64,16 +71,45 @@ export class LoginComponent implements OnInit {
 
   signInWithFB(): void {
     this.authService.signIn(FacebookLoginProvider.PROVIDER_ID).then(
-      data =>{
+      data => {
         console.log(data);
-        this.router.navigate(['/dashboard']);
-      }
+  
+        const user: Usuario = {
+          
+          username: data.name,
+          password: data.id,
+          Nombre: data.name,
+          Apellido: data.lastName,
+          CorreoElectronico: data.email
+        };
+  
+        this.loading = true;
+
+
+        
+  
+        this._userService.signIn(user).subscribe({
+          next: (v) => {
+            this.loading = false;
+            this.usergo.setUserName(this.username);
+            console.log('Nombre de usuario:', this.username);
+
+            this.router.navigate(['/dashboard']);
+          },
+          error: (e: HttpErrorResponse) => {
+            this.loading = false;
+            this._errorService.msjError(e);
+          }
+        });
+      }  // <-- Missing closing parenthesis here
     );
   }
 
   signOut(): void {
     this.authService.signOut();
   }
+
+
  
 
 }    

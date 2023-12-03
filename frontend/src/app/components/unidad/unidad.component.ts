@@ -2,7 +2,8 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UnidadService } from 'src/app/services/unidad/unidad.service';
 import { IdStorageService } from 'src/app/services/id-storage.service';
-
+import { UserglobalService } from 'src/app/services/userglobal.service';
+import { UsuarioService } from 'src/app/services/usuario/usuario.service';
 declare var paypal: any;
 
 @Component({
@@ -12,6 +13,8 @@ declare var paypal: any;
 })
 export class UnidadComponent implements OnInit {
   unidad: any; 
+  username: string = '';
+  usuario: any;
 
   @ViewChild('paypal', { static: true }) paypalElement!: ElementRef;
   
@@ -26,7 +29,9 @@ export class UnidadComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private unidadService: UnidadService,
-    private idStorageService: IdStorageService
+    private idStorageService: IdStorageService,
+    private ugloService: UserglobalService,
+    private usuarioService: UsuarioService,
   ) {}
 
   ngOnInit(): void {
@@ -53,32 +58,41 @@ export class UnidadComponent implements OnInit {
           return actions.order.create({
             purchase_units: [
               {
-                nombre:this.unidad.NombrePropiedad,
-                descripcion:this.unidad.Descripcion,
+                nombre: this.unidad.NombrePropiedad,
+                descripcion: this.unidad.Descripcion,
                 amount: {
                   currency_code: 'MXN',
-                  value: this.unidad.PrecioPorNoche
-                }
-              }
-            ]
+                  value: this.unidad.PrecioPorNoche,
+                },
+              },
+            ],
           });
         },
         onApprove: async (data: any, actions: any) => {
           const order = await actions.order.capture();
           console.log(order);
+
+          // Llamar a la función para generar el recibo
+          this.generateReceipt(order);
         },
         onError: function (err: any) {
           console.log(err);
-        }
+        },
       })
       .render(this.paypalElement.nativeElement);
+
+
+      this.username = this.ugloService.getUserName();
+
+      // Llama a la función para obtener la información del usuario
+      this.getUsuarioByUsername(this.username);
   }
 
   deleteUnidad(id: string) {
     this.unidadService.deleteUnidad(id).subscribe(
       () => {
         // Redirige a la página deseada después de eliminar la unidad
-        this.router.navigate(['/otro-componente']); // Cambia '/otro-componente' por la URL real
+        this.router.navigate(['/']); // Cambia '/otro-componente' por la URL real
       },
       (err) => {
         console.log(err);
@@ -86,6 +100,40 @@ export class UnidadComponent implements OnInit {
       }
     );
   }
+  
+
+
+generateReceipt(order: any) {
+  // Puedes personalizar el formato del recibo según tus necesidades
+  const receipt = `
+    Recibo de PayPal
+    -----------------
+    ID Usuario:${this.usuario.ID}
+    ID de la orden: ${order.id}
+    Nombre de la propiedad: ${this.unidad.NombrePropiedad}
+    Starus: ${order.status}
+    Cantidad: ${order.purchase_units[0].amount.value} ${order.purchase_units[0].amount.currency_code}
+    -----------------
+    ¡Gracias por tu compra!
+  `;
+
+  // Puedes imprimir el recibo en la consola o mostrarlo en tu aplicación
+  console.log(receipt);
+
+  // También puedes agregar lógica adicional aquí, como enviar el recibo por correo electrónico, etc.
+}
+
+getUsuarioByUsername(id: string) {
+  // Realiza la solicitud al servidor para obtener la información del usuario
+  this.usuarioService.getUsuario(id).subscribe(
+    (res) => {
+      this.usuario = res;
+   
+    },
+    (err) => console.log(err)
+  );
+}
+
 }
   
 

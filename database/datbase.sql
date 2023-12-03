@@ -106,3 +106,10 @@ CREATE TABLE terreneitor_db.users (
      NumeroTelefono VARCHAR(255),
      FechaRegistro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+CREATE TABLE usersRed (
+    ID INT  PRIMARY KEY,
+    username VARCHAR(255) NOT NULL,
+	Nombre VARCHAR(255),
+    CorreoElectronico VARCHAR(255) UNIQUE,
+     FechaRegistro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
