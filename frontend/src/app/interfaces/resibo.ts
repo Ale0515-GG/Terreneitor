@@ -1,9 +1,7 @@
-export interface Resibo {
+export interface Recibo {
     ID?: string;
+    IdUsuario?: string;
     NombrePropiedad?: string;
-    Descripcion?: string;
-    TipoPropiedad?: string;
-    PrecioPorNoche?: number;
-    DireccionID?: string;
-    IdUsuario?: number; // Propiedad para la clave foránea del usuario
+    Estado?: string;
+    Cantidad?: string;
 }

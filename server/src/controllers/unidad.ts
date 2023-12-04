@@ -42,7 +42,7 @@ class UnidadController {
         const {id}=req.params;
         const result = await pool.then(async (connection) => {
             return await connection.query(
-                'DELETE FROM unidad WHERE IdCita=?',[id]
+                'DELETE FROM unidad WHERE ID=?',[id]
             );
         })
         res.json({text:"unidad "+req.params.id+" was deleted"});
@@ -60,6 +60,16 @@ class UnidadController {
     }        
 
  
+    public async listByUserId(req: Request, res: Response): Promise<any> {
+        const { idUsuario } = req.params;
+        const result = await pool.then(async (connection) => {
+            return await connection.query(
+                'SELECT * FROM unidad WHERE IdUsuario = ?', [idUsuario]
+            );
+        });
+    
+        res.json(result);
+    }
 }
 
 export const unidadController = new UnidadController()

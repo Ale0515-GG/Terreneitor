@@ -1,20 +1,25 @@
-import { Router } from "express"; //objeto
-import { resiboController } from "../controllers/resibo";
+import { Router } from "express";
 
-class UnidadRoutes{
+import { reciboController } from "../controllers/resibo";
+
+class ReciboRoutes {
     public router: Router = Router();
 
-    constructor(){
+    constructor() {
         this.config();
     }
 
-    config(): void{
-        this.router.get('/',resiboController.list); //ruta inicial
-        this.router.post('/',resiboController.create);
-        this.router.put('/:id',resiboController.update);
-        this.router.delete('/:id',resiboController.delete);
-        this.router.get('/:id',resiboController.select);
+    config(): void {
+        this.router.get('/', reciboController.list);
+        this.router.post('/', reciboController.create);
+        this.router.put('/:id', reciboController.update);
+        this.router.delete('/:id', reciboController.delete);
+        this.router.get('/:id', reciboController.select);
+
+        // Nuevo endpoint para obtener recibos por ID de usuario
+        this.router.get('/usuario/:idUsuario', reciboController.listByUserId);
     }
 }
-const  unidadRoutes = new UnidadRoutes();
-export default unidadRoutes.router;
+
+const reciboRoutes = new ReciboRoutes();
+export default reciboRoutes.router;

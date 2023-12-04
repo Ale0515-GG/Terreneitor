@@ -13,6 +13,9 @@ class UnidadRoutes {
         this.router.put('/:id', unidad_1.unidadController.update);
         this.router.delete('/:id', unidad_1.unidadController.delete);
         this.router.get('/:id', unidad_1.unidadController.select);
+        // ... (otros métodos)
+        // Nuevo endpoint para obtener unidades por ID de usuario
+        this.router.get('/usuario/:idUsuario', unidad_1.unidadController.listByUserId);
     }
 }
 const unidadRoutes = new UnidadRoutes();

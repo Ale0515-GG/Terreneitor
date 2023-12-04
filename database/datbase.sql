@@ -113,3 +113,10 @@ CREATE TABLE usersRed (
     CorreoElectronico VARCHAR(255) UNIQUE,
      FechaRegistro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+CREATE TABLE Recibo(
+    ID VARCHAR (20) PRIMARY KEY,
+    IdUsuario VARCHAR(100) NOT NULL,
+    NombrePropiedad VARCHAR(255),
+    Estado VARCHAR(255),
+    Cantidad VARCHAR(255)
+);

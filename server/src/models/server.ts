@@ -12,7 +12,7 @@ import { User } from './user';
 import routesUser from '../routes/user';
 import unidadRoutes from '../routes/unidad';
 import usuarioRoutes from '../routes/usuario';
-
+import reciboRoutes from '../routes/resibo';
 
 
 
@@ -43,6 +43,7 @@ class Server {
         this.app.use('/api/users', routesUser);
         this.app.use('/api/unidad',unidadRoutes);
         this.app.use('/api/usuario',usuarioRoutes);
+        this.app.use('/api/recibo',reciboRoutes)
     
     }
 

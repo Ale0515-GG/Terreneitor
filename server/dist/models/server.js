@@ -20,6 +20,7 @@ const user_1 = require("./user");
 const user_2 = __importDefault(require("../routes/user"));
 const unidad_1 = __importDefault(require("../routes/unidad"));
 const usuario_1 = __importDefault(require("../routes/usuario"));
+const resibo_1 = __importDefault(require("../routes/resibo"));
 class Server {
     constructor() {
         this.app = (0, express_1.default)();
@@ -39,6 +40,7 @@ class Server {
         this.app.use('/api/users', user_2.default);
         this.app.use('/api/unidad', unidad_1.default);
         this.app.use('/api/usuario', usuario_1.default);
+        this.app.use('/api/recibo', resibo_1.default);
     }
     midlewares() {
         // Parseo body

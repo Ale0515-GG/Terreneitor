@@ -68,14 +68,12 @@ export class LoginComponent implements OnInit {
       // ...
     });
   }
-
   signInWithFB(): void {
     this.authService.signIn(FacebookLoginProvider.PROVIDER_ID).then(
       data => {
         console.log(data);
   
         const user: Usuario = {
-          
           username: data.name,
           password: data.id,
           Nombre: data.name,
@@ -84,26 +82,35 @@ export class LoginComponent implements OnInit {
         };
   
         this.loading = true;
-
-
-        
   
-        this._userService.signIn(user).subscribe({
-          next: (v) => {
+        // Verifica si el usuario ya existe antes de intentar el inicio de sesión
+        this.UsuarioService.getUserByUsername(user.username).subscribe(existingUser => {
+          if (existingUser) {
+            // Usuario ya existe, simplemente inicia sesión sin crear uno nuevo
             this.loading = false;
-            this.usergo.setUserName(this.username);
-            console.log('Nombre de usuario:', this.username);
-
+            this.usergo.setUserName(user.username);
+            console.log('Nombre de usuario:', user.username);
             this.router.navigate(['/dashboard']);
-          },
-          error: (e: HttpErrorResponse) => {
-            this.loading = false;
-            this._errorService.msjError(e);
+          } else {
+            // Usuario no existe, procede con el proceso de inicio de sesión
+            this._userService.signIn(user).subscribe({
+              next: (v) => {
+                this.loading = false;
+                this.usergo.setUserName(user.username);
+                console.log('Nombre de usuario:', user.username);
+                this.router.navigate(['/dashboard']);
+              },
+              error: (e: HttpErrorResponse) => {
+                this.loading = false;
+                this._errorService.msjError(e);
+              }
+            });
           }
         });
-      }  // <-- Missing closing parenthesis here
+      }
     );
   }
+  
 
   signOut(): void {
     this.authService.signOut();

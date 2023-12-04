@@ -1,40 +1,32 @@
 <app-narvar></app-narvar>
-<head>
-    <meta charset="UTF-8">
-   
-    <title>Agregar Unidad</title>
-</head>
 
-<body>
-  <div class="container">
-    <h1 class="mt-3">Administrar tus Unidades</h1>
-    <a href="/agregar-unidad" class="btn btn-sm btn-primary ml-2">Agregar Unidad</a>
+<div class="container">
+  <h1 class="mt-3">Administrar tus Unidades</h1>
+  <a href="/agregar-unidad" class="btn btn-sm btn-primary ml-2">Agregar Unidad</a>
 </div>
 
 <br>
 
 <section class="container">
-    <div class="row">
-      <div class="col-md-4">
-          <div class="card">
-            <img src="imagen1.jpg" class="card-img-top" alt="Imagen 1">
-            <div class="card-body">
-              <h5 class="card-title">Nombre del lugar</h5>
-              <p class="card-text">Descripción del lugar y características.</p>
-              <div class="btn-group">
-                <button class="btn btn-sm btn-secondary">Eliminar</button>
-                <button class="btn btn-sm btn-primary ml-2" routerLink="editar-unidad">Actualizar</button>
-              </div>
-            </div>
+  <div class="row">
+    <div *ngFor="let unidad of unidades" class="col-md-4">
+      <div class="card">
+        <!-- Asegúrate de ajustar las propiedades de la unidad según tu interfaz -->
+        <img [src]="unidad.imagenUrl" class="card-img-top" alt="{{ unidad.NombrePropiedad }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ unidad.NombrePropiedad }}</h5>
+          <p class="card-text">{{ unidad.Descripcion }}</p>
+          <div class="btn-group">
+            <!-- Puedes agregar lógica para eliminar y actualizar unidades según tus necesidades -->
+            <button class="btn btn-sm btn-secondary" (click)="eliminarUnidad(unidad.ID)">Eliminar</button>
+            <button class="btn btn-sm btn-primary ml-2" [routerLink]="'editar-unidad/' + unidad.ID">Actualizar</button>
           </div>
-   
+        </div>
       </div>
     </div>
-  </section>
-  
-  
+  </div>
+</section>
 
-       
-  <footer class="bg-dark text-white text-center py-3">
-    <p>&copy; 2023 Terreneitor. Todos los derechos reservados.</p>
-  </footer>
+<footer class="bg-dark text-white text-center py-3">
+  <p>&copy; 2023 Terreneitor. Todos los derechos reservados.</p>
+</footer>

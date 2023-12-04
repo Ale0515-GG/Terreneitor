@@ -12,13 +12,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.resiboController = void 0;
+exports.reciboController = void 0;
 const database_1 = __importDefault(require("../database"));
-class ResiboController {
+class ReciboController {
     list(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const result = yield database_1.default.then((connection) => __awaiter(this, void 0, void 0, function* () {
-                return yield connection.query("SELECT * FROM unidad");
+                return yield connection.query("SELECT * FROM recibo");
             }));
             res.json(result);
         });
@@ -27,29 +27,29 @@ class ResiboController {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
             const result = yield database_1.default.then((connection) => __awaiter(this, void 0, void 0, function* () {
-                return yield connection.query('SELECT * FROM unidad WHERE id=?', [id]);
+                return yield connection.query('SELECT * FROM recibo WHERE id=?', [id]);
             }));
             if (result.length > 0) {
                 return res.json(result[0]); //revuelve al cliente
             }
             console.log(result);
-            res.status(404).json({ text: 'La unidad no existe' }); //codigo de estado
+            res.status(404).json({ text: 'La recibo no existe' }); //codigo de estado
         });
     }
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             //console.log(req.body)
             const result = yield database_1.default.then((connection) => __awaiter(this, void 0, void 0, function* () {
-                return yield connection.query('INSERT INTO unidad set ?', [req.body]);
+                return yield connection.query('INSERT INTO recibo set ?', [req.body]);
             }));
-            res.json({ texto: "unidad Saved" });
+            res.json({ texto: "unirecibodad Saved" });
         });
     }
     delete(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
             const result = yield database_1.default.then((connection) => __awaiter(this, void 0, void 0, function* () {
-                return yield connection.query('DELETE FROM unidad WHERE IdCita=?', [id]);
+                return yield connection.query('DELETE FROM recibo WHERE IdCita=?', [id]);
             }));
             res.json({ text: "unidad " + req.params.id + " was deleted" });
             // res.json({text:"deleting cita"});
@@ -59,10 +59,19 @@ class ResiboController {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
             const result = yield database_1.default.then((connection) => __awaiter(this, void 0, void 0, function* () {
-                return yield connection.query("UPDATE unidad SET ? WHERE Idunidad =?", [req.body, id]);
+                return yield connection.query("UPDATE recibo SET ? WHERE Idunidad =?", [req.body, id]);
             }));
             res.json({ text: "unidad " + req.params.id + " was updated" });
         });
     }
+    listByUserId(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { idUsuario } = req.params;
+            const result = yield database_1.default.then((connection) => __awaiter(this, void 0, void 0, function* () {
+                return yield connection.query('SELECT * FROM recibo WHERE IdUsuario = ?', [idUsuario]);
+            }));
+            res.json(result);
+        });
+    }
 }
-exports.resiboController = new ResiboController();
+exports.reciboController = new ReciboController();

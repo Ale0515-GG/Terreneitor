@@ -1,19 +1,21 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const express_1 = require("express"); //objeto
+const express_1 = require("express");
 const resibo_1 = require("../controllers/resibo");
-class UnidadRoutes {
+class ReciboRoutes {
     constructor() {
         this.router = (0, express_1.Router)();
         this.config();
     }
     config() {
-        this.router.get('/', resibo_1.resiboController.list); //ruta inicial
-        this.router.post('/', resibo_1.resiboController.create);
-        this.router.put('/:id', resibo_1.resiboController.update);
-        this.router.delete('/:id', resibo_1.resiboController.delete);
-        this.router.get('/:id', resibo_1.resiboController.select);
+        this.router.get('/', resibo_1.reciboController.list);
+        this.router.post('/', resibo_1.reciboController.create);
+        this.router.put('/:id', resibo_1.reciboController.update);
+        this.router.delete('/:id', resibo_1.reciboController.delete);
+        this.router.get('/:id', resibo_1.reciboController.select);
+        // Nuevo endpoint para obtener recibos por ID de usuario
+        this.router.get('/usuario/:idUsuario', resibo_1.reciboController.listByUserId);
     }
 }
-const unidadRoutes = new UnidadRoutes();
-exports.default = unidadRoutes.router;
+const reciboRoutes = new ReciboRoutes();
+exports.default = reciboRoutes.router;

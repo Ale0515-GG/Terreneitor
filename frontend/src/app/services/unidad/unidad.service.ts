@@ -35,4 +35,8 @@ export class UnidadService {
     return this.http.put(`${this.API_URI}/unidad/${id}`,updateUnidad);
 
   }
+  getUnidadesPorUsuario(idUsuario: number) {
+    return this.http.get(`${this.API_URI}/unidad/usuario/${idUsuario}`);
+  }
+  
 }
