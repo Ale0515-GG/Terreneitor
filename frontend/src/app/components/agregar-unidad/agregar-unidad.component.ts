@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { UnidadService } from 'src/app/services/unidad/unidad.service';
 import { Router } from '@angular/router';
 import { Unidad } from 'src/app/interfaces/unidad';
+import { UserglobalService } from 'src/app/services/userglobal.service';
+import { UsuarioService } from 'src/app/services/usuario/usuario.service';
 
 @Component({
   selector: 'app-agregar-unidad',
@@ -15,12 +17,27 @@ export class AgregarUnidadComponent implements OnInit {
     TipoPropiedad: '',
     PrecioPorNoche: 0,
     DireccionID: '',
-   
+    IdUsuario: 0,  // Asegúrate de asignar el IdUsuario correcto
   };
+  username: string = '';
+  usuario: any;
 
-  constructor(private unidadService: UnidadService, private router: Router) {}
+  constructor(private unidadService: UnidadService, private router: Router, private ugloService: UserglobalService, private usuarioService: UsuarioService) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.username = this.ugloService.getUserName();
+    this.getUsuarioByUsername(this.username);
+  }
+
+  getUsuarioByUsername(username: string) {
+    this.usuarioService.getUsuario(username).subscribe(
+      (res) => {
+        this.usuario = res;
+        this.unida.IdUsuario = this.usuario.id;  // Asegúrate de obtener el Id correcto del usuario
+      },
+      (err) => console.log(err)
+    );
+  }
 
   saveNewUnidad() {
     this.unidadService.saveUnidad(this.unida).subscribe(
@@ -32,5 +49,3 @@ export class AgregarUnidadComponent implements OnInit {
     );
   }
 }
-
-
