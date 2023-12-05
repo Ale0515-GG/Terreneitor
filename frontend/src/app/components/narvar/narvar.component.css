@@ -1,0 +1,10 @@
+/* Estilos para hacer más grande el texto 'Terreneitor' */
+.navbar-brand {
+    font-size: 50px; /* Tamaño grande para 'Terreneitor' */
+  }
+  
+  /* Estilos para hacer más pequeños los textos 'Inicio', 'Usuario' y 'Consejos' */
+  .navbar-nav .nav-link {
+    font-size: 16px; /* Tamaño más pequeño para los enlaces */
+  }
+  
