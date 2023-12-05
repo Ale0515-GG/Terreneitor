@@ -1,11 +1,10 @@
-// Importar solo lo necesario desde '@angular/core'
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UnidadService } from 'src/app/services/unidad/unidad.service';
 import { IdStorageService } from 'src/app/services/id-storage.service';
 import { UserglobalService } from 'src/app/services/userglobal.service';
 import { UsuarioService } from 'src/app/services/usuario/usuario.service';
-import { ReciboService } from 'src/app/services/recibo/resibo.service'; // Corregir la importación del servicio
+import { ReciboService } from 'src/app/services/recibo/resibo.service';
 
 declare var paypal: any;
 
@@ -18,6 +17,7 @@ export class UnidadComponent implements OnInit {
   unidad: any;
   username: string = '';
   usuario: any;
+  du: any;
 
   @ViewChild('paypal', { static: true }) paypalElement!: ElementRef;
 
@@ -40,6 +40,7 @@ export class UnidadComponent implements OnInit {
         this.unidadService.getUnidad(id).subscribe(
           (res) => {
             this.unidad = res;
+            this.getUsuario(this.unidad.IdUsuario);
           },
           (err) => {
             console.log(err);
@@ -48,36 +49,42 @@ export class UnidadComponent implements OnInit {
       }
     });
 
-    paypal
-      .Buttons({
-        createOrder: (data: any, actions: any) => {
-          return actions.order.create({
-            purchase_units: [
-              {
-                name: this.unidad.NombrePropiedad, // Corregir 'nombre' a 'name'
-                description: this.unidad.Descripcion,
-                amount: {
-                  currency_code: 'MXN',
-                  value: this.unidad.PrecioPorNoche,
+    if (this.paypalElement) {
+      paypal
+        .Buttons({
+          createOrder: (data: any, actions: any) => {
+            return actions.order.create({
+              purchase_units: [
+                {
+                  name: this.unidad.NombrePropiedad,
+                  description: this.unidad.Descripcion,
+                  amount: {
+                    currency_code: 'MXN',
+                    value: this.unidad.PrecioPorNoche,
+                  },
                 },
-              },
-            ],
-          });
-        },
-        onApprove: async (data: any, actions: any) => {
-          const order = await actions.order.capture();
-          console.log(order);
-
-          this.generateReceipt(order);
-        },
-        onError: function (err: any) {
-          console.log(err);
-        },
-      })
-      .render(this.paypalElement.nativeElement);
+              ],
+            });
+          },
+          onApprove: async (data: any, actions: any) => {
+            try {
+              const order = await actions.order.capture();
+              console.log(order);
+              this.generateReceipt(order);
+            } catch (err) {
+              console.error('Error al capturar la orden de PayPal:', err);
+            }
+          },
+          onError: (err: any) => {
+            console.log(err);
+          },
+        })
+        .render(this.paypalElement.nativeElement);
+    }
 
     this.username = this.ugloService.getUserName();
     this.getUsuarioByUsername(this.username);
+    this.getUsuario(this.unidad.IdUsuario);
   }
 
   deleteUnidad(id: string) {
@@ -90,6 +97,7 @@ export class UnidadComponent implements OnInit {
       }
     );
   }
+
   generateReceipt(order: any) {
     const datosRecibo = {
       ID: order.id.toString(),
@@ -98,16 +106,12 @@ export class UnidadComponent implements OnInit {
       Estado: order.status.toString(),
       Cantidad: order.purchase_units[0].amount.value.toString(),
     };
-  
-    // Primero eliminamos la unidad
+
     this.deleteUnidad(this.unidad.ID);
-  
-    // Después de eliminar la unidad, guardamos el recibo
+
     this.reciboService.saveRecibo(datosRecibo).subscribe(
       (res: any) => {
         console.log('Recibo guardado exitosamente:', res);
-        
-        // Finalmente, redirigimos
         this.router.navigate(['/pagos']);
       },
       (err: any) => {
@@ -115,12 +119,20 @@ export class UnidadComponent implements OnInit {
       }
     );
   }
-  
 
   getUsuarioByUsername(id: string) {
     this.usuarioService.getUsuario(id).subscribe(
       (res) => {
         this.usuario = res;
+      },
+      (err) => console.log(err)
+    );
+  }
+
+  getUsuario(IdUsuario: string) {
+    this.usuarioService.getUsuario(IdUsuario).subscribe(
+      (res) => {
+        this.du = res;
       },
       (err) => console.log(err)
     );

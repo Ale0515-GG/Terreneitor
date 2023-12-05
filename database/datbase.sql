@@ -36,7 +36,7 @@ CREATE TABLE unidad (
     DireccionID VARCHAR(255),
     imagen VARCHAR(100),
     IdUsuario INT,
-    FOREIGN KEY (IdUsuario) REFERENCES Usuarios(ID)
+     FOREIGN KEY (IdUsuario) REFERENCES users(ID)
 );
 
 
