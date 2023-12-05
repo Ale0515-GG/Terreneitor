@@ -1,0 +1,51 @@
+/* Estilos generales */
+html, body {
+    height: 100%;
+    margin: 0;
+  }
+  
+  /* Estilos para el contenedor de fondo */
+  .background-container {
+    font-family: Arial, sans-serif;
+    background-image: url('../../../assets/img/administra.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100%;
+    position: relative;
+  }
+  
+  /* Estilos para el título "Administrar tus Unidades" */
+  .container h1 {
+    text-align: center;
+    font-size: 5em; /* Tamaño del texto */
+    font-weight: bold; /* Texto en negrita */
+  }
+  
+  /* Estilos para el botón "Agregar Unidad" */
+  .btn-primary {
+    display: block;
+    margin: 0 auto;
+    background-color: gray; /* Cambiar color de fondo del botón */
+    color: white; /* Cambiar color del texto del botón */
+    font-weight: bold; /* Texto en negrita */
+    font-size: 1.2em; /* Tamaño del texto */
+    width: 200px; /* Ancho del botón */
+    background-position: center;
+  }
+  
+  /* Estilos para el título de las tarjetas */
+  .card-title {
+    text-align: center;
+    font-size: 1.5em; /* Tamaño del texto */
+    font-weight: bold; /* Texto en negrita */
+  }
+  
+  /* Estilos para el texto dentro de las tarjetas */
+  .card-text {
+    text-align: center;
+    font-style: italic; /* Estilo de letra */
+    font-weight: bold; /* Texto en negrita */
+    font-size: 1.2em; /* Tamaño del texto */
+  }
+  

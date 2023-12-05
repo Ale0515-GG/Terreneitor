@@ -1,16 +1,72 @@
-
-
-.mapa {
-  position: absolute;
-  top: auto;
-  right: 0;
-  width: auto;
-  height: 100vh;
+/* Estilos generales para el proyecto */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif; /* Cambia la fuente según tus preferencias */
 }
 
+.background-container {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-image: url('../../../assets/img/inicio.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-attachment: fixed;
+}
 
+/* Resto de tus estilos */
+.card.bg-dark.text-white.text-right {
+  padding: 50px;
+  text-align: center;
+}
 
-  #img1 {
-    max-height: 40px; /* Ajusta este valor según tus preferencias */
+.card.bg-dark.text-white.text-right h1 {
+  font-size: 3.5em;
+  margin-bottom: 20px;
+}
+
+.container.mt-6 {
+  margin-top: 50px;
+}
+
+.container.mt-6 .row {
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.container h1.display-4 {
+  font-size: 3em;
+  text-align: center;
+  margin-bottom: 30px;
+  font-weight: bold;
+}
+
+.card {
+  background-color: #6992b1;
+  margin-bottom: 30px;
+}
+
+.card img.card-img-top {
+  max-height: 350px;
+}
+
+.card-body {
+  text-align: center;
+}
+
+.card-title {
+  font-size: 1.8em;
+  margin-bottom: 15px;
+}
+
+.card-text {
+  font-size: 1.4em;
+}
+
+@media (max-width: 576px) {
+  .container.mt-6 .row {
+    display: block;
   }
-
+}

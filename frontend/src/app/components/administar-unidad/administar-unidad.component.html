@@ -1,5 +1,5 @@
 <app-narvar></app-narvar>
-
+<div class="background-container">
 <div class="container">
   <h1 class="mt-3">Administrar tus Unidades</h1>
   <a href="/agregar-unidad" class="btn btn-sm btn-primary ml-2">Agregar Unidad</a>
@@ -12,7 +12,7 @@
     <div *ngFor="let unidad of unidades" class="col-md-4">
       <div class="card">
         <!-- Asegúrate de ajustar las propiedades de la unidad según tu interfaz -->
-        <img [src]="unidad.imagenUrl" class="card-img-top" alt="{{ unidad.NombrePropiedad }}">
+        <img src="../../../assets/img/Casita.jpeg" class="card-img-top" [alt]="unidad.nombre">
         <div class="card-body">
           <h5 class="card-title">{{ unidad.NombrePropiedad }}</h5>
           <p class="card-text">{{ unidad.Descripcion }}</p>
@@ -26,7 +26,5 @@
     </div>
   </div>
 </section>
-
-<footer class="bg-dark text-white text-center py-3">
-  <p>&copy; 2023 Terreneitor. Todos los derechos reservados.</p>
-</footer>
+<app-footer></app-footer>
+</div>
