@@ -1,0 +1,53 @@
+/* Estilos para el cuerpo de la página */
+app-footer {
+    align-self: flex-end;
+    margin-top: auto;
+    margin-top: 20px; /* Agrega un margen superior para separar del contenido */
+}
+
+.background-container {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('../../../assets/img/precios.jpg'); /* Ajusta la ruta según la ubicación del archivo CSS */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* Estilos para el contenedor principal */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 20px;
+}
+
+/* Estilos para el título "Procesos de Compra" */
+h1 {
+    font-size: 48px; /* Tamaño de fuente mucho más grande */
+    font-weight: bold; /* Negrita */
+    margin-bottom: 20px; /* Espaciado inferior */
+}
+
+/* Estilos para las tarjetas */
+.card {
+    margin: 10px;
+    width: 50%; /* Puedes ajustar esto según tus necesidades */
+    text-align: center;
+    background-color: #bee9ff; /* Gris azulado */
+    border-radius: 10px;
+}
+
+.card-title {
+    font-size: 28px; /* Tamaño de fuente más grande */
+    margin-bottom: 10px;
+    font-weight: bold; /* Negrita */
+}
+
+.card-text {
+    font-size: 18px;
+    margin-bottom: 20px;
+}

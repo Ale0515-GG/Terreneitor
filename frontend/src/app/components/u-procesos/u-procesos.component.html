@@ -1,18 +1,17 @@
 <app-narvar></app-narvar>
+<div class="background-container">
+    <div class="container">
+        <h1>Procesos de Compra</h1>
 
-<div class="container">
-    <h1>Procesos de Compra</h1>
-
-    <!-- Itera sobre los recibos y muestra la información dinámicamente -->
-    <div *ngFor="let recibo of recibos" class="card">
-        <div class="card-body">
-            <h5 class="card-title">{{ recibo.NombrePropiedad }}</h5>
-            <p class="card-text">Este proceso de compra está {{ recibo.Estado }}.</p>
-            <span [ngClass]="{'badge badge-success': recibo.Estado === 'Finalizado', 'badge badge-warning': recibo.Estado === 'En Proceso', 'badge badge-danger': recibo.Estado === 'Cancelado'}">{{ recibo.Estado }}</span>
+        <!-- Itera sobre los recibos y muestra la información dinámicamente -->
+        <div *ngFor="let recibo of recibos" class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{ recibo.NombrePropiedad }}</h5>
+                <p class="card-text">Este proceso de compra está {{ recibo.Estado }}.</p>
+                <span [ngClass]="{'badge badge-success': recibo.Estado === 'Finalizado', 'badge badge-warning': recibo.Estado === 'En Proceso', 'badge badge-danger': recibo.Estado === 'Cancelado'}">{{ recibo.Estado }}</span>
+            </div>
         </div>
     </div>
-</div>
 
-<footer class="bg-dark text-white text-center py-3">
-    <p>&copy; 2023 Terreneitor. Todos los derechos reservados.</p>
-</footer>
+    <app-footer></app-footer>
+</div>
