@@ -1,0 +1,31 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    font-size: 16px; /* Tamaño base de la fuente */
+    display: flex; /* Usar flexbox para alinear contenido verticalmente */
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+}
+
+.background-container {
+    font-family: Arial, sans-serif;
+    background-image: url('../../../assets/img/Fondos.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100%;
+    position: relative;
+    padding: 30px; /* Agregar espacio alrededor del contenido */
+}
+
+.card {
+    color: white; /* Color de texto blanco */
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
+    padding: 30px; /* Agregar espacio interno al contenedor */
+    border-radius: 10px; /* Borde redondeado */
+}
+
+h1, h2, h3 {
+    font-weight: bold; /* Texto en negrita */
+    font-family: "Arial Black", Arial, sans-serif; /* Fuente negrita */
+}
