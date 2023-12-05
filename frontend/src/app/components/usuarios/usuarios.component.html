@@ -1,14 +1,11 @@
 <app-narvar></app-narvar>
 
-<img src="../../../assets/img/fondo.jpg" class="img-fluid" style="position: absolute; right: 0; top: 0; z-index: -100; opacity: 0.75;">
-
-<div class="background-container">
+<div class="background-container" style="background-image: url('../../../assets/img/fondoazul.jpg');">
     <section class="container tarjetas-section">
-
         <div class="row justify-content-center">
 
             <!-- Tarjetas en la primera fila -->
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <a routerLink="/usuario_informacionPersonal">
                     <div class="card">
                         <div class="card-body">
@@ -19,7 +16,7 @@
                 </a>
             </div>
 
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <a routerLink="/administar-unidad">
                     <div class="card">
                         <div class="card-body">
@@ -30,7 +27,19 @@
                 </a>
             </div>
 
-            <div class="col-md-4">
+            <!-- Tarjetas en la segunda fila -->
+            <div class="col-md-6">
+                <a routerLink="/procesos">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Procesos (Recibos)</h5>
+                            <p class="card-text">Administra pagos y recibos</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-md-6">
                 <a routerLink="/agregar-unidad">
                     <div class="card">
                         <div class="card-body">
@@ -39,44 +48,6 @@
                         </div>
                     </div>
                 </a>
-            </div>
-
-            <!-- Tarjetas en la segunda fila -->
-            <div class="col-md-4">
-                
-                    <div class="card">
-                        <div class="card-body">
-                            <br>
-                            <br>
-                           
-                        </div>
-                    </div>
-        
-            </div>
-
-            <br>
-            <br>
-
-            <div class="col-md-4">
-                <a routerLink="/procesos">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Procesos (Resivos)  </h5>
-                            <p class="card-text">Administra pagos y recibos</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-md-4">
-               
-                    <div class="card">
-                        <div class="card-body">
-                            <br>
-                            <br>
-                        </div>
-                    </div>
-              
             </div>
 
         </div>
