@@ -2,11 +2,11 @@ import {Request, Response } from 'express';
 
 import pool from '../database';
 
-class UnidadController {
+class ReciboController {
     public async list (req: Request, res: Response){
          const result =  await pool.then(async (connection)=> {
              return await connection.query(
-                 "SELECT * FROM unidad"
+                 "SELECT * FROM recibo"
              );
         })   
          res.json(result);
@@ -16,25 +16,25 @@ class UnidadController {
         const {id}=req.params;
         const result = await pool.then(async (connection) => {
             return await connection.query(
-                'SELECT * FROM unidad WHERE id=?',[id]
+                'SELECT * FROM recibo WHERE id=?',[id]
             );
         })
         if (result.length >0){
             return res.json(result[0]); //revuelve al cliente
         }
         console.log(result);
-        res.status(404).json({text:'La unidad no existe'});//codigo de estado
+        res.status(404).json({text:'La recibo no existe'});//codigo de estado
     }
 
         public async create (req:Request, res:Response): Promise<void>{
         //console.log(req.body)
         const result = await pool.then(async (connection) => {
             return await connection.query(
-                'INSERT INTO unidad set ?',[req.body]
+                'INSERT INTO recibo set ?',[req.body]
             );
         })
     
-        res.json({texto:"unidad Saved"});
+        res.json({texto:"unirecibodad Saved"});
     
     }
 
@@ -42,7 +42,7 @@ class UnidadController {
         const {id}=req.params;
         const result = await pool.then(async (connection) => {
             return await connection.query(
-                'DELETE FROM unidad WHERE ID=?',[id]
+                'DELETE FROM recibo WHERE IdCita=?',[id]
             );
         })
         res.json({text:"unidad "+req.params.id+" was deleted"});
@@ -53,23 +53,23 @@ class UnidadController {
         const { id } = req.params;
         const result = await pool.then(async (connection) => {
             return await connection.query(
-                "UPDATE unidad SET ? WHERE Idunidad =?", [req.body, id]
+                "UPDATE recibo SET ? WHERE Idunidad =?", [req.body, id]
             );
         });
         res.json({ text: "unidad " + req.params.id + " was updated" });
     }        
 
  
-    public async listByUserId(req: Request, res: Response): Promise<any> {
-        const { idUsuario } = req.params;
-        const result = await pool.then(async (connection) => {
-            return await connection.query(
-                'SELECT * FROM unidad WHERE IdUsuario = ?', [idUsuario]
-            );
-        });
-    
-        res.json(result);
-    }
-}
 
-export const unidadController = new UnidadController()
+public async listByUserId(req: Request, res: Response): Promise<any> {
+    const { idUsuario } = req.params;
+    const result = await pool.then(async (connection) => {
+        return await connection.query(
+            'SELECT * FROM recibo WHERE IdUsuario = ?', [idUsuario]
+        );
+    });
+
+    res.json(result);
+}
+}
+export const reciboController = new ReciboController()

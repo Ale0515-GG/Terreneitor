@@ -1,38 +1,14 @@
 <app-narvar></app-narvar>
-<html>
-<head>
-    <title>Procesos de Compra</title>
-  
-</head>
-<body>
-    <div class="container">
-        <h1>Procesos de Compra</h1>
 
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Proceso 1</h5>
-                <p class="card-text">Este proceso de compra está finalizado.</p>
-                <span class="badge badge-success">Finalizado</span>
-            </div>
-        </div>
+<div class="container">
+    <h1>Procesos de Compra</h1>
 
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Proceso 2</h5>
-                <p class="card-text">Este proceso de compra está en proceso actualmente.</p>
-                <span class="badge badge-warning">En Proceso</span>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Proceso 3</h5>
-                <p class="card-text">Este proceso de compra ha sido cancelado.</p>
-                <span class="badge badge-danger">Cancelado</span>
-            </div>
+    <!-- Itera sobre los recibos y muestra la información dinámicamente -->
+    <div *ngFor="let recibo of recibos" class="card">
+        <div class="card-body">
+            <h5 class="card-title">{{ recibo.NombrePropiedad }}</h5>
+            <p class="card-text">Este proceso de compra está {{ recibo.Estado }}.</p>
+            <span [ngClass]="{'badge badge-success': recibo.Estado === 'Finalizado', 'badge badge-warning': recibo.Estado === 'En Proceso', 'badge badge-danger': recibo.Estado === 'Cancelado'}">{{ recibo.Estado }}</span>
         </div>
     </div>
-
-
-</body>
-</html>
+</div>

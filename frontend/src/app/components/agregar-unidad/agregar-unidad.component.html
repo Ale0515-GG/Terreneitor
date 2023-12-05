@@ -1,17 +1,16 @@
-
 <app-narvar></app-narvar>
-
-<img src="../../../assets/img/fondo.jpg" class="img-fluid" style="position: absolute; right: 0; top: 0; z-index: -100; opacity: 0.75;">
 
 <div class="background-container">
   <section class="container tarjetas-section">
     <h1 class="mt-3">Agregar Unidad</h1>
+
     <div class="container">
-      <form #unidadForm="ngForm"> <!-- Agregamos un formulario con una referencia a "unidadForm" -->
+      <form #unidadForm="ngForm">
+
         <!-- Nombre de la unidad -->
         <h2 class="mt-4">Nombre de la unidad</h2>
         <input type="text" class="form-control" placeholder="Nombre de la Unidad" [(ngModel)]="unida.NombrePropiedad" name="NombrePropiedad">
-        
+
         <!-- Precios y disponibilidad -->
         <div class="row mt-4">
           <div class="col-md-6">
@@ -36,31 +35,35 @@
           </div>
         </div>
 
+        <!-- Tipo de Propiedad -->
         <div class="row mt-4">
           <div class="col-md-6">
             <div class="card">
               <div class="card-body">
-                <h3>Dueño</h3>
-                <p>Información del usuario precargada</p>
-                <!-- Agrega más detalles sobre el anfitrión aquí si es necesario -->
+                <h3>Tipo de Propiedad</h3>
+                <select class="form-control" [(ngModel)]="unida.TipoPropiedad" name="TipoPropiedad">
+                  <option value="Casa">Casa</option>
+                  <option value="Departamento">Departamento</option>
+                  <option value="Terreno">Terreno</option>
+                </select>
               </div>
             </div>
           </div>
         </div>
 
+        <!-- Dirección -->
         <div class="row mt-4">
           <div class="col-md-12">
             <div class="card">
               <div class="card-body">
                 <h3>Dirección</h3>
                 <input type="text" class="form-control" placeholder="Dirección" [(ngModel)]="unida.DireccionID" name="DireccionID">
-                <p>Mapa implementado con API</p>
               </div>
             </div>
           </div>
         </div>
 
-        <br>
+ 
 
         <button class="btn btn-primary" (click)="saveNewUnidad()" [disabled]="!unidadForm.valid">Guardar</button>
       </form>

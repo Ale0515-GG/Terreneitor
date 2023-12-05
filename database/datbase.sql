@@ -36,7 +36,7 @@ CREATE TABLE unidad (
     DireccionID VARCHAR(255),
     imagen VARCHAR(100),
     IdUsuario INT,
-    FOREIGN KEY (IdUsuario) REFERENCES Usuarios(ID)
+     FOREIGN KEY (IdUsuario) REFERENCES users(ID)
 );
 
 
@@ -105,4 +105,18 @@ CREATE TABLE terreneitor_db.users (
     CorreoElectronico VARCHAR(255) UNIQUE,
      NumeroTelefono VARCHAR(255),
      FechaRegistro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+CREATE TABLE usersRed (
+    ID INT  PRIMARY KEY,
+    username VARCHAR(255) NOT NULL,
+	Nombre VARCHAR(255),
+    CorreoElectronico VARCHAR(255) UNIQUE,
+     FechaRegistro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+CREATE TABLE Recibo(
+    ID VARCHAR (20) PRIMARY KEY,
+    IdUsuario VARCHAR(100) NOT NULL,
+    NombrePropiedad VARCHAR(255),
+    Estado VARCHAR(255),
+    Cantidad VARCHAR(255)
 );

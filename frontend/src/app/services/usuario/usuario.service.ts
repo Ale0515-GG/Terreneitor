@@ -31,9 +31,13 @@ export class UsuarioService {
   updateNombre(id: string, nombre: string): Observable<Usuario> {
     return this.http.put<Usuario>(`${this.API_URI}/usuario/${id}`, nombre);
   }
+
   updateUsuario(id: number, usuario: Usuario): Observable<Usuario> {
     return this.http.put<Usuario>(`${this.API_URI}/usuario/${id}`, usuario);
   }
-  
 
+  // Nuevo método para obtener un usuario por nombre de usuario
+  getUserByUsername(username: string): Observable<Usuario> {
+    return this.http.get<Usuario>(`${this.API_URI}/usuario?username=${username}`);
+  }
 }
