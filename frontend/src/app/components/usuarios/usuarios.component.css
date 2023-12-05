@@ -1,19 +1,52 @@
+
 a {
-    text-decoration: none;
+  text-decoration: none;
+}
+/* Estilos generales */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
 }
 
+/* Estilos para el contenedor y las tarjetas */
 .background-container {
-    position: relative; /* Para que los elementos absolutos se posicionen con respecto a este contenedor */
-  }
-  
-  .background-container img {
-    position: absolute;
-    top: 0;
-    right: 0;
-    z-index: 100;
-    opacity: 0.75;
-    width: 100%; /* Asegúrate de que la imagen cubra todo el contenedor */
-    height: 100%;
-    object-fit: cover; /* Ajusta la imagen para que cubra todo el contenedor */
-  }
-  
+  background-color: #f2f2f2; /* Color de fondo gris claro */
+  background-image: url('../../../assets/img/fondoazul.jpg'); /* Ruta de la imagen de fondo */
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  padding-bottom: 50px; /* Altura del footer */
+}
+
+.tarjetas-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start; /* Alinear a la izquierda */
+  align-items: center;
+  padding-top: 50px; /* Espacio antes del contenido */
+}
+
+.card {
+  width: 100%; /* Ancho de las tarjetas */
+  margin: 20px;
+  background-color: #b4dff5; /* Color azul más claro para las tarjetas */
+  border-radius: 10px;
+  padding: 40px;
+  text-align: center; /* Alinear texto al centro */
+  text-decoration: none; /* Quitar subrayado de los enlaces */
+  color: #000; /* Color del texto negro */
+}
+
+.card-title {
+  font-size: 3em; /* Tamaño más grande del título */
+  margin-bottom: 15px;
+}
+
+.card-text {
+  font-size: 2em; /* Tamaño del texto de la tarjeta */
+}
+
+/* Resto de tus estilos personalizados */
