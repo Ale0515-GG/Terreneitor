@@ -9,7 +9,7 @@ import { Recibo } from 'src/app/interfaces/resibo';
 })
 export class ReciboService {
 
-  API_URI = 'http://localhost:3001/api';
+  API_URI = 'http://192.168.2.148:3001/api';
 
   constructor(private http: HttpClient) { }
 

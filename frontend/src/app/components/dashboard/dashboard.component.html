@@ -33,7 +33,7 @@
       <div class="col-12">
         <h1 class="display-4">Descubre lugares</h1>
       </div>
-      <div class="col-md-4" *ngFor="let unidad of unidades">
+      <div class="col-md-4" *ngFor="let unidad of unidades" (click)="guardarIDEnVariableGlobal(unidad.ID)">
         <!-- Tarjetas de propiedades -->
         <div class="card">
           <img src="../../../assets/img/Casita.jpeg" class="card-img-top" [alt]="unidad.nombre">
