@@ -1,4 +1,4 @@
-import { HttpErrorResponse } from '@angular/common/http';
+import { HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -13,8 +13,8 @@ import { UserglobalService } from 'src/app/services/userglobal.service';
 import { usersRed } from '../../interfaces/usersRed';
 import { UsuarioService } from 'src/app/services/usuario/usuario.service';
 
-
 import { Usuario } from 'src/app/interfaces/usuario';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -24,7 +24,6 @@ export class LoginComponent implements OnInit {
   username: string = '';
   password: string = '';
   loading: boolean = false;
- 
 
   constructor(
     private toastr: ToastrService,
@@ -34,45 +33,45 @@ export class LoginComponent implements OnInit {
     private usergo: UserglobalService,
     private userService: UserService,
     private authService: SocialAuthService,
-    private UsuarioService:UsuarioService
-   
-    ) { }
+    private UsuarioService: UsuarioService
+  ) { }
 
   ngOnInit(): void {
   }
 
   login() {
-    // Validamos que el usuario ingrese datos
-    if (this.username == '' || this.password == '') {
-      this.toastr.error('Todos los campos son obligatorios', 'Error');
-      return;
-    }
-
-    // Creamos el body
+    // Validaciones...
     const user: User = {
       username: this.username,
       password: this.password,
     }
 
     this.loading = true;
-    
+
     this._userService.login(user).subscribe({
       next: (token) => {
         localStorage.setItem('token', token);
-        
-        // Establece el nombre de usuario en el servicio
+
         this.usergo.setUserName(this.username);
         console.log('Nombre de usuario:', this.username);
         this.router.navigate(['/dashboard']);
       },
-      // ...
+      error: (error: HttpErrorResponse) => {
+        if (error.status === 404) {
+          this.toastr.error('El usuario no existe', 'Error');
+        } else {
+          this.toastr.error('Ocurrió un error inesperado', 'Error');
+        }
+        this.loading = false;
+      }
     });
   }
+
   signInWithFB(): void {
     this.authService.signIn(FacebookLoginProvider.PROVIDER_ID).then(
       data => {
         console.log(data);
-  
+
         const user: Usuario = {
           username: data.name,
           password: data.id,
@@ -80,19 +79,16 @@ export class LoginComponent implements OnInit {
           Apellido: data.lastName,
           CorreoElectronico: data.email
         };
-  
+
         this.loading = true;
-  
-        // Verifica si el usuario ya existe antes de intentar el inicio de sesión
+
         this.UsuarioService.getUserByUsername(user.username).subscribe(existingUser => {
           if (existingUser) {
-            // Usuario ya existe, simplemente inicia sesión sin crear uno nuevo
             this.loading = false;
             this.usergo.setUserName(user.username);
             console.log('Nombre de usuario:', user.username);
             this.router.navigate(['/dashboard']);
           } else {
-            // Usuario no existe, procede con el proceso de inicio de sesión
             this._userService.signIn(user).subscribe({
               next: (v) => {
                 this.loading = false;
@@ -101,6 +97,11 @@ export class LoginComponent implements OnInit {
                 this.router.navigate(['/dashboard']);
               },
               error: (e: HttpErrorResponse) => {
+                if (e.status === 404) {
+                  this.toastr.error('El usuario no existe', 'Error');
+                } else {
+                  this.toastr.error('Ocurrió un error inesperado', 'Error');
+                }
                 this.loading = false;
                 this._errorService.msjError(e);
               }
@@ -110,13 +111,8 @@ export class LoginComponent implements OnInit {
       }
     );
   }
-  
 
   signOut(): void {
     this.authService.signOut();
   }
-
-
- 
-
-}    
+}
