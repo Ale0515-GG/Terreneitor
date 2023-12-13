@@ -122,7 +122,7 @@ import { LoadingComponent } from './components/mapita/maps/components/loading/lo
         providers: [
           {
             id: FacebookLoginProvider.PROVIDER_ID,
-            provider: new FacebookLoginProvider('644370744353231'),
+            provider: new FacebookLoginProvider('386183797082547'),
           },
         ],
       } as SocialAuthServiceConfig,
